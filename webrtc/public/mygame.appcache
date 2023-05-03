@@ -1,7 +1,0 @@
-CACHE MANIFEST 
-index.html
-Build/web.wasm
-Build/web.data
-TemplateData/webgl-logo.png
-Build/*
-TemplateData/*
