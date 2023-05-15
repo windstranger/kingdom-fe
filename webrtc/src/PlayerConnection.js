@@ -4,14 +4,18 @@ export class PlayerConnection {
         this.webrtcHandlers = webrtcHandlers;
         this.remoteId = remoteId
         this.sendMessage = sendMessage
-        this.pc = new RTCPeerConnection({});
+        this.pc = new RTCPeerConnection({
+            iceServers: [
+                {urls: ["stun:194.87.235.155"]},
+            ]
+        });
         this.pc.oniceconnectionstatechange = e => console.log("connection state", this.pc.iceConnectionState);
         if (isAnswer) {
             this.pc.ondatachannel = (event) => {
                 this.dataChannel = event.channel;
                 this.dataChannel.onopen = this.onDataChannelOpen;
                 this.dataChannel.onclose = () => console.log("data channel closed");
-                this.dataChannel.onmessage = (msg)=>{
+                this.dataChannel.onmessage = (msg) => {
                     const data = JSON.parse(msg.data);
                     webrtcHandlers(data)
                 }
@@ -20,7 +24,7 @@ export class PlayerConnection {
             this.dataChannel = this.pc.createDataChannel('chat');
             this.dataChannel.onopen = this.onDataChannelOpen;
             this.dataChannel.onclose = () => console.log("data channel closed");
-            this.dataChannel.onmessage = (msg)=>{
+            this.dataChannel.onmessage = (msg) => {
                 const data = JSON.parse(msg.data);
                 webrtcHandlers(data)
             }

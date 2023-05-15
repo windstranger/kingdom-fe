@@ -8,7 +8,9 @@ function WebSocketHandler({playerName}) {
     const playerConnections = useRef([])
     const [players, setPlayers] = useState([]);
     const playerRef = useRef();
-    const socketUrl = `ws://192.168.0.10:8765/?playerName=${playerName}`
+    // const socketUrl = `ws://192.168.0.10:8765/?playerName=${playerName}`
+    const socketUrl = `ws://194.87.235.155:8765/?playerName=${playerName}`
+
     const usernameRef = useRef();
     const webrtcHandlers = (data) => {
         console.log(data);
