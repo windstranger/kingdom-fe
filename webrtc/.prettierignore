@@ -1,0 +1,14 @@
+node_modules
+dist
+build
+.yarn
+
+packages/lk-fl-api
+packages/lk-fl-ens-api
+packages/lk-taps-api
+packages/lk-taps-attach-api
+packages/lk-mmserver-api
+packages/lk-osaa-api
+packages/lk-fias-api
+
+tools/extractRoutes/routes.package.json
