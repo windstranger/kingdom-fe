@@ -3,11 +3,22 @@ import useWebSocket from "react-use-websocket";
 import {PlayerConnection} from "./PlayerConnection.js";
 
 function WebSocketHandler({playerName}) {
+    const [textToSend, setTextToSend] = useState("");
+    const [playerMessages, setPlayerMessages] = useState([]);
     const playerConnections = useRef([])
     const [players, setPlayers] = useState([]);
     const playerRef = useRef();
-    const socketUrl = `ws://localhost:8765/?playerName=${playerName}`
+    const socketUrl = `ws://192.168.0.10:8765/?playerName=${playerName}`
     const usernameRef = useRef();
+    const webrtcHandlers = (data) => {
+        console.log(data);
+        switch (data.type) {
+            case "message":
+                setPlayerMessages(prevPlayers => [...prevPlayers, `${data.fromId} saying: ` + data.data])
+                break;
+        }
+    }
+
     const {sendMessage, lastMessage, readyState} = useWebSocket(socketUrl,
         {
             onOpen: () => console.log('opened'),
@@ -23,34 +34,49 @@ function WebSocketHandler({playerName}) {
                         console.log(data.message)
                         // setPlayers(data.data)
                     }
+
+                    if (data.type === "newplayer") {
+                        // const nPlayers = data.data.filter(p => p !== playerName)
+                        setPlayers(players => {
+                            return [...players, data.data]
+                        })
+                        const playerConnection = new PlayerConnection(playerName, data.data, sendMessage, false, webrtcHandlers)
+                        playerConnections.current.push(playerConnection);
+                        await playerConnection.createOffer()
+                    }
+
                     if (data.type === "players") {
-                        setPlayers(data.data)
+                        const nPlayers = data.data.filter(p => p !== playerName)
+
+                        setPlayers(players => {
+                            return [...players, ...nPlayers]
+                        })
+
+                        // console.log(nPlayers);
+                        //
                     }
                     if (data.type === "sdp") {
-                        console.log("received sdp", data);
-                        const playerCon = playerConnections.current.find(con => con.fromId = data.fromId)
+                        const playerCon = playerConnections.current.find(con => con.remoteId === data.fromId)
                         if (playerCon) {
+                            console.log("received answer", data);
                             await playerCon.setRemoteDescription(data.data)
                         } else {
-                            const playerConnection = new PlayerConnection(playerName, data.fromId, sendMessage, true)
-
+                            console.log("received offer", data);
+                            const playerConnection = new PlayerConnection(playerName, data.fromId, sendMessage, true, webrtcHandlers)
                             playerConnections.current.push(playerConnection);
                             await playerConnection.createAnswer(data.data);
+                            console.log("answer created");
                         }
                         // setPlayers(data.data)
                     }
-                    if (data.type === "offer") {
-                        setPlayers(data.data)
-                    }
-                    if (data.type === "answer") {
-                        setPlayers(data.data)
-                    }
                     if (data.type === "icecandidate") {
-                        console.log("icecandidate");
                         const candidate = new RTCIceCandidate(data.data);
+                        console.log("icecandidate from other peer");
+                        console.log(data.data);
                         try {
-                            const playerCon = playerConnections.current.find(con => con.fromId = data.fromId)
+                            const playerCon = playerConnections.current.find(con => con.remoteId === data.fromId)
                             await playerCon.addIceCandidate(candidate)
+                            console.log("setting candidate success");
                         } catch (e) {
                             console.log(e)
                         }
@@ -61,24 +87,21 @@ function WebSocketHandler({playerName}) {
             }
         }
     );
-    const onSendMessage = () => {
-        sendMessage(JSON.stringify({name: usernameRef.current.value, type: "hello"}))
-    }
-
-    function onServerSelect(ev) {
-        console.log(ev.target.value);
-    }
 
     async function onConnectToPlayer() {
-        const playerConnection = new PlayerConnection(playerName, playerRef.current.value, sendMessage)
+        const playerConnection = new PlayerConnection(playerName, playerRef.current.value, sendMessage, false, webrtcHandlers)
         playerConnections.current.push(playerConnection);
         await playerConnection.createOffer()
-
     }
 
-    const sendWebRtcMessage= async ()=>{
+    const sendWebRtcMessage = async () => {
         // console.log(playerConnections.current);
-        await playerConnections.current[0].sendDataChannelMessage();
+        await Promise.all(playerConnections.current?.map(async pc => {
+            await pc.sendDataChannelMessage(textToSend);
+        }))
+
+        setPlayerMessages(prevPlayers => [...prevPlayers, textToSend])
+        setTextToSend("")
     }
 
     useEffect(() => {
@@ -87,6 +110,7 @@ function WebSocketHandler({playerName}) {
 
     return (
         <div>
+            My name is: {playerName}
             <select size={10} ref={playerRef}>
                 {players.map((player, index) => {
                     return <option key={index} value={player}>{player}</option>
@@ -95,8 +119,15 @@ function WebSocketHandler({playerName}) {
             <div>
                 Server status: {readyState}
             </div>
+            <div>
+                {playerMessages.map((msg, index) => {
+                    return <div key={index}>{msg}</div>
+                })
+                }
+            </div>
             <button onClick={onConnectToPlayer}>connect to player</button>
-            <button onClick={sendWebRtcMessage}>send webrtc message</button>
+            <input type={"text"} value={textToSend} onChange={(e) => setTextToSend(e.target.value)}/>
+            <button onClick={sendWebRtcMessage}>send webrtc message to all</button>
 
             {/*<button onClick={onSendMessage}>connect to client</button>*/}
         </div>

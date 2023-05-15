@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import WebSocketHandler from "./WebSocketHandler.jsx";
 
 function EnterLobby(props) {
-    const [playerName, setPlayerName] = useState("sasha");
+    const [playerName, setPlayerName] = useState("sasha"+new Date().getSeconds());
     const [connected, setConnected] = useState(false);
 
     function onEnterLobby() {

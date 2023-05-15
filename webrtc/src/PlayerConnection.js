@@ -1,6 +1,7 @@
 export class PlayerConnection {
-    constructor(myId, remoteId, sendMessage, isAnswer) {
+    constructor(myId, remoteId, sendMessage, isAnswer, webrtcHandlers) {
         this.myId = myId
+        this.webrtcHandlers = webrtcHandlers;
         this.remoteId = remoteId
         this.sendMessage = sendMessage
         this.pc = new RTCPeerConnection({});
@@ -10,26 +11,33 @@ export class PlayerConnection {
                 this.dataChannel = event.channel;
                 this.dataChannel.onopen = this.onDataChannelOpen;
                 this.dataChannel.onclose = () => console.log("data channel closed");
-                this.dataChannel.onmessage = this.onDataChannelMessage;
+                this.dataChannel.onmessage = (msg)=>{
+                    const data = JSON.parse(msg.data);
+                    webrtcHandlers(data)
+                }
             };
         } else {
             this.dataChannel = this.pc.createDataChannel('chat');
             this.dataChannel.onopen = this.onDataChannelOpen;
             this.dataChannel.onclose = () => console.log("data channel closed");
-            this.dataChannel.onmessage = this.onDataChannelMessage;
+            this.dataChannel.onmessage = (msg)=>{
+                const data = JSON.parse(msg.data);
+                webrtcHandlers(data)
+            }
         }
         this.pc.onicecandidate = ({candidate}) => {
-            console.log("new ice candidate");
+            console.log("new ice candidate", candidate);
             if (candidate) {
                 sendMessage(JSON.stringify({fromId: myId, remoteId, type: "icecandidate", data: candidate}))
             }
         }
     }
 
-    async sendDataChannelMessage() {
+    async sendDataChannelMessage(msg) {
         console.log("datachannel ready state", this.dataChannel.readyState);
+        console.log(this.remoteId);
         try {
-            this.dataChannel.send("sasha")
+            this.dataChannel.send(JSON.stringify({type: "message", data: msg, fromId: this.myId}))
         } catch (e) {
             console.log(e);
         }
@@ -39,15 +47,16 @@ export class PlayerConnection {
         console.log("datachannel open");
     }
 
-    async onDataChannelMessage(msg) {
-        console.log("datachannel message");
-        console.log(msg);
+    onDataChannelMessage = (msg) => {
+        const data = JSON.parse(msg.data);
+        this.webrtcHandlers(data)
     }
 
     async createOffer() {
         try {
             const offer = await this.pc.createOffer();
             await this.getDescription(offer);
+            console.log("sending offer", offer);
         } catch (e) {
             console.log(e);
         }
