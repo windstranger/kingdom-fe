@@ -265,7 +265,7 @@ function App() {
 
             {/*<button onClick={sendMessage}>send message</button>*/}
 
-            {/*<UnityComponent/>*/}
+            <UnityComponent/>
             <EnterLobby/>
         </>
     )
