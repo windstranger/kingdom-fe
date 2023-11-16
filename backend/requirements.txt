@@ -1,0 +1,5 @@
+asyncio
+jsonlib2
+websockets
+urllib3
+uuid
