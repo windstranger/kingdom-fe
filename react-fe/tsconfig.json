@@ -1,25 +1,48 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
+    "declaration": false,
+    "emitDeclarationOnly": false,
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "declarationMap": false,
+    "esModuleInterop": false,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": false,
     "isolatedModules": true,
-    "noEmit": true,
+    //check
     "jsx": "react-jsx",
-
-    /* Linting */
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": false,
+    "resolveJsonModule": true,
+    //check
+    "skipLibCheck": true,
+    "sourceMap": false,
     "strict": true,
-    "noUnusedLocals": true,
+    "target": "ESNext",
+    //"target": "es2019",
+    "useDefineForClassFields": true,
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    /* Bundler mode */
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    /* Linting */
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }
