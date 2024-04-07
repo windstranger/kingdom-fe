@@ -26,17 +26,22 @@ export function UnityContainer() {
 
     const roundStart = () => {
         const gameParameters = {
-            playerCards: [
-                1, 2, 3
-            ],
-            world: {
-                a2: {
-                    card: [1, 2],
-                    player: 2
+            eventType: "roundStart",
+            data: {
+                playerCards: [
+                    1, 2, 3
+                ],
+                world: {
+                    a2: {
+                        card: [1, 2],
+                        player: 2
+                    }
                 }
             }
         }
-        sendMessage("GameController", "roundStart", JSON.stringify(gameParameters));
+
+        // sendMessage("GameController", "unityEvent", JSON.stringify(gameParameters));
+        sendMessage("GameController", "reactEvent", JSON.stringify(gameParameters));
     }
     const gameEnd = () => {
         const gameParameters = {
