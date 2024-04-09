@@ -1,0 +1,8 @@
+node_modules
+dist
+build
+.yarn
+
+packages/api
+packages/api-spec
+
