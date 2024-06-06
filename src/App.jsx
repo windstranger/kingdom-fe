@@ -9,8 +9,12 @@ function App() {
     <>
       <Router>
         <div className={'flex gap-4'}>
-          <Link to={'/'}>home</Link>
-          <Link to={'/game'}>game</Link>
+          <Link className={'underline text-blue-400'} to={'/'}>
+            home
+          </Link>
+          <Link className={'underline text-blue-400'} to={'/game'}>
+            game
+          </Link>
         </div>
         <Routes>
           <Route path={'/game'} element={<GameScreen />}></Route>

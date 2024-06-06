@@ -5,12 +5,16 @@ import { difference } from 'lodash/array.js';
 
 export const stateAtom = atomWithLocalStorage('playerName', null);
 export const playerConnectionsAtom = atom([]);
-export const gameAtom = atom();
+export const playersAtom = atom([]);
+export const gameAtom = atom(null);
+export const websocketAtom = atom({});
+export const playerMessagesAtom = atom([]);
 
 const cardsAmount = 182;
 const statuses = {
   waitingCards: 'waitingCards',
-  running: 'runningCards',
+  pickingCards: 'pickingCards',
+  placingItems: 'placingItems',
 };
 export class Player {
   status = statuses.waitingCards;
@@ -29,7 +33,7 @@ export class Player {
     if (this.status !== statuses.waitingCards) {
       this.nextCards.push([...cards]);
     } else {
-      this.status = statuses.running;
+      this.status = statuses.pickingCards;
       this.cards = [...cards];
     }
   }
@@ -39,12 +43,16 @@ export class Player {
     if (this.nextCards?.length) {
       this.cards = [...this.nextCards.splice(0, 1)]?.[0] || [];
       this.nextCards = [...this.nextCards];
-      this.status = statuses.running;
+      this.status = statuses.pickingCards;
     } else {
       this.status = statuses.waitingCards;
       this.cards = [];
     }
+
     this.game.endTurn(this, playedCards, remainingCards);
+  }
+  endRound(placedItems) {
+    this.game.endRound(this, placedItems);
   }
 }
 export class Game {
@@ -64,12 +72,14 @@ export class Game {
     }
     return this.players[nextPlayerIndex];
   }
-  endRound() {
-    this.playersFinished = 0;
-    this.currentRound += 1;
-    if (this.currentRound !== 4) {
+  endRound(player, placedItems) {
+    this.playersFinished += 1;
+    if (this.playersFinished === this.players?.length && this.currentRound !== 4) {
+      this.playersFinished = 0;
+      this.currentRound += 1;
       this.roundBegin();
-    } else {
+    }
+    if (this.currentRound === 4 && this.playersFinished === this.players?.length) {
       this.gameEnd();
     }
   }
@@ -83,24 +93,19 @@ export class Game {
     console.log('game end');
   }
   endTurn(player, playedCards, remainingCards) {
-    if (!remainingCards?.length) {
-      this.playersFinished += 1;
-    } else {
+    if (remainingCards?.length) {
       const nextPlayer = this.getNextPlayer(player);
       nextPlayer.takeCards(remainingCards);
     }
-
-    if (!remainingCards?.length && this.playersFinished === this.players?.length) {
-      debugger;
-      this.endRound();
-    }
   }
+
   joinGame(player) {
     player.game = this;
     this.players.push(player);
   }
   startGame() {
-    this.cards = shuffle(range(cardsAmount));
+    // this.cards = shuffle(range(cardsAmount));
+    this.cards = range(cardsAmount);
     this.currentRound = 1;
     this.roundBegin();
   }
