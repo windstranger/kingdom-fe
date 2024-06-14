@@ -1,14 +1,16 @@
 import { atomWithLocalStorage } from '../atomWithStorage.js';
-import { atom } from 'jotai';
+import { atom, createStore, useAtom } from 'jotai';
 import { range, shuffle } from 'lodash';
 import { difference } from 'lodash/array.js';
-
+export const store = createStore();
+export const hasServerAtom = atom(false);
 export const stateAtom = atomWithLocalStorage('playerName', null);
 export const playerConnectionsAtom = atom([]);
 export const playersAtom = atom([]);
 export const gameAtom = atom(null);
 export const websocketAtom = atom({});
 export const playerMessagesAtom = atom([]);
+export const serverPlayerConnection = atom();
 
 const cardsAmount = 182;
 const statuses = {

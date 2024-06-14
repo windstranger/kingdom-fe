@@ -16,6 +16,12 @@ export const useWebRtcHandlers = () => {
       case 'message':
         setPlayerMessages((prevPlayers) => [...prevPlayers, `${data.fromId} saying: ` + data.data]);
         break;
+      case 'serverWelcome':
+        console.log('serverWelcome');
+        break;
+      case 'startGame':
+        console.log('startGame');
+        break;
     }
   };
   return webrtcHandlers;
@@ -28,6 +34,7 @@ const WebSocketHandler = memo(({ playerName }) => {
   const socketUrl = `ws://127.0.0.1:8765/?playerName=${playerName}`;
 
   const webrtcHandlers = useWebRtcHandlers();
+
   const setSendMessage = useSetAtom(websocketAtom);
   const webSocket = useWebSocket(socketUrl, {
     onOpen: () => console.log('opened'),
@@ -52,11 +59,9 @@ const WebSocketHandler = memo(({ playerName }) => {
         if (data.type === 'sdp') {
           const playerCon = playerConnections.find((con) => con.remoteId === data.fromId);
           if (playerCon) {
-            debugger;
             console.log('received answer', data);
             await playerCon.setRemoteDescription(data.data);
           } else {
-            debugger;
             console.log('received offer', data);
             const playerConnection = new PlayerConnection(
               playerName,
@@ -72,7 +77,6 @@ const WebSocketHandler = memo(({ playerName }) => {
           // setPlayers(data.data)
         }
         if (data.type === 'icecandidate') {
-          debugger;
           const candidate = new RTCIceCandidate(data.data);
           console.log('icecandidate from other peer');
           console.log(data.data);

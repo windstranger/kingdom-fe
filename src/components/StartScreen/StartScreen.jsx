@@ -1,32 +1,35 @@
 import { useNavigate } from 'react-router-dom';
-import { stateAtom, websocketAtom } from '../../atoms/stateAtom.js';
-import { useAtom } from 'jotai';
+import { hasServerAtom, stateAtom, store, websocketAtom } from '../../atoms/stateAtom.js';
+import { Provider, useAtom, useAtomValue } from 'jotai';
 import { LoginForm } from './LoginForm.jsx';
 import WebSocketHandler from '../../WebSocketHandler.jsx';
 import { WaitingRoom } from './WaitingRoom.jsx';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { GameController } from './GameController.jsx';
-import { useAtomValue } from 'jotai';
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 export const StartScreen = () => {
   const navigate = useNavigate();
   const [playerName, setPlayerName] = useAtom(stateAtom);
-  const [serverCreated, setServerCreated] = useState(false);
+  const [serverCreated, setServerCreated] = useAtom(hasServerAtom);
+  console.log(serverCreated);
 
   const onEnterRoom = (e) => {
     e.preventDefault();
     setPlayerName(e.target.nick.value);
-    navigate('/room');
   };
 
   const { sendMessage } = useAtomValue(websocketAtom);
   const createServer = useCallback(() => {
     setServerCreated(true);
     sendMessage(JSON.stringify({ fromId: playerName, type: 'newServer' }));
-  }, [sendMessage]);
+  }, [sendMessage, setServerCreated]);
 
   return (
-    <div>
+    <Provider store={store}>
+      <ToastContainer />
       {!playerName ? (
         <LoginForm onEnterRoom={onEnterRoom} />
       ) : (
@@ -39,6 +42,6 @@ export const StartScreen = () => {
           )}
         </>
       )}
-    </div>
+    </Provider>
   );
 };

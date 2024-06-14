@@ -9,6 +9,7 @@ import {
 import { PlayerConnection } from '../../PlayerConnection.js';
 import { useWebRtcHandlers } from '../../WebSocketHandler.jsx';
 import { useAtomValue } from 'jotai';
+import { Button } from '../ui/Button.jsx';
 
 export const WaitingRoom = ({ playerName, createServer }) => {
   const [textToSend, setTextToSend] = useState('');
@@ -47,6 +48,13 @@ export const WaitingRoom = ({ playerName, createServer }) => {
     setTextToSend('');
   };
 
+  const sendMessageToUser = async () => {
+    const userId = playerRef.current.value;
+    const pc = playerConnections.find((pc) => pc.remoteId === userId);
+    await pc.sendDataChannelMessage(textToSend);
+    setPlayerMessages((prevPlayers) => [...prevPlayers, textToSend]);
+    setTextToSend('');
+  };
   return (
     <div>
       My name is: {playerName}
@@ -65,10 +73,11 @@ export const WaitingRoom = ({ playerName, createServer }) => {
           return <div key={index}>{msg}</div>;
         })}
       </div>
-      <button onClick={onConnectToPlayer}>connect to server</button>
+      <Button onClick={onConnectToPlayer}>connect to server</Button>
       <input type={'text'} value={textToSend} onChange={(e) => setTextToSend(e.target.value)} />
-      <button onClick={sendWebRtcMessage}>send webrtc message to all</button>
-      <button onClick={createServer}>create server</button>
+      <Button onClick={sendWebRtcMessage}>send webrtc message to all</Button>
+      <Button onClick={sendMessageToUser}>send webrtc message to all</Button>
+      <Button onClick={createServer}>create server</Button>
       {/*<button onClick={onSendMessage}>connect to client</button>*/}
     </div>
   );
