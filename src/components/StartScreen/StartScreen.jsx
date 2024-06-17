@@ -4,11 +4,13 @@ import { Provider, useAtom, useAtomValue } from 'jotai';
 import { LoginForm } from './LoginForm.jsx';
 import WebSocketHandler from '../../WebSocketHandler.jsx';
 import { WaitingRoom } from './WaitingRoom.jsx';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { GameController } from './GameController.jsx';
 import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
+import { gameEvent$, notifyUnity } from './eventBus.ts';
+import { Button } from '../ui/Button.jsx';
 
 export const StartScreen = () => {
   const navigate = useNavigate();
@@ -27,6 +29,11 @@ export const StartScreen = () => {
     sendMessage(JSON.stringify({ fromId: playerName, type: 'newServer' }));
   }, [sendMessage, setServerCreated]);
 
+  useEffect(() => {
+    const sub = gameEvent$.subscribe(notifyUnity);
+    return () => sub.unsubscribe();
+  }, [gameEvent$]);
+
   return (
     <Provider store={store}>
       <ToastContainer />
@@ -34,6 +41,13 @@ export const StartScreen = () => {
         <LoginForm onEnterRoom={onEnterRoom} />
       ) : (
         <>
+          <Button
+            onClick={() => {
+              gameEvent$.next({ type: 'START_GAME', payload: playerName });
+            }}
+          >
+            event
+          </Button>
           <WebSocketHandler playerName={playerName} />
           {!serverCreated ? (
             <WaitingRoom createServer={createServer} playerName={playerName} />
