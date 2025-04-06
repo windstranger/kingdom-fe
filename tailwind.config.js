@@ -5,5 +5,10 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [daisyui()],
+  plugins: [
+    daisyui({
+      themes: 'light',
+      darkTheme: false,
+    }),
+  ],
 };
