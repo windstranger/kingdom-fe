@@ -146,7 +146,6 @@ export default function WebRtcQR2() {
               if (sdp) {
                 setScanning(false);
                 const offerDesc = new RTCSessionDescription(JSON.parse(sdp));
-                console.log(offerDesc);
                 peerRef.current!.setRemoteDescription(offerDesc).then(async () => {
                   const answer = await peerRef.current!.createAnswer();
                   await peerRef.current!.setLocalDescription(answer);

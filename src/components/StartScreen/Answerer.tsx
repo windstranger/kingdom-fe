@@ -4,7 +4,7 @@ import { useInterval } from 'usehooks-ts';
 
 export const Answerer = ({ qrChunks }: { qrChunks: any[] }) => {
   const [visibleQr, setVisibleQr] = useState<number>(0);
-  const [delay, setDelay] = useState(1000);
+  const [delay, setDelay] = useState(500);
 
   useInterval(async () => {
     const rem = (visibleQr + 1) % qrChunks.length;
@@ -19,18 +19,16 @@ export const Answerer = ({ qrChunks }: { qrChunks: any[] }) => {
         const qrData = `${chunk.chunk}|Part:${partNumber}/${totalChunks}`; // Форматируем данные с информацией о частях
 
         return (
-          <>
-            <QRCodeCanvas
-              key={i}
-              className={i !== visibleQr ? `hidden` : ''}
-              value={qrData}
-              size={300}
-              level="L"
-              style={{ margin: 8 }}
-              width={300}
-              height={300}
-            />
-          </>
+          <QRCodeCanvas
+            key={i}
+            className={i !== visibleQr ? `hidden` : ''}
+            value={qrData}
+            size={300}
+            level="L"
+            style={{ margin: 8 }}
+            width={300}
+            height={300}
+          />
         );
       })}
     </div>
