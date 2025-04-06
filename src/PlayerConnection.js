@@ -93,7 +93,9 @@ export class PlayerConnection {
   async createAnswer(sdp) {
     try {
       await this.pc.setRemoteDescription(sdp);
+      console.log(sdp);
       const answer = await this.pc.createAnswer();
+      console.log(answer);
       await this.getDescription(answer);
     } catch (e) {
       console.log(e);
