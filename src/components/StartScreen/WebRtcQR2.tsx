@@ -60,6 +60,7 @@ export default function WebRtcQR2() {
   const peerRef = useRef<RTCPeerConnection>();
   const dataChannelRef = useRef<RTCDataChannel>();
   const offerChunks: OfferChunks = useRef({}).current;
+  const answerChunks: OfferChunks = useRef({}).current;
 
   const setupPeer = () => {
     const pc = new RTCPeerConnection(config);
@@ -134,25 +135,26 @@ export default function WebRtcQR2() {
   };
 
   const handleAnswerScan = () => {
-    const scanner = new Html5QrcodeScanner('reader', { fps: 10, qrbox: 250 }, false);
-    const answerChunks: string[] = [];
+    setScanning(true);
+    // const scanner = new Html5QrcodeScanner('reader', { fps: 10, qrbox: 250 }, false);
+    // const answerChunks: string[] = [];
 
-    scanner.render(
-      (decoded) => {
-        // answerChunks.push(decoded);
-        // if (decoded.endsWith('#END')) {
-        //   scanner.clear();
-        //   const full = answerChunks.join('').replace('#END', '');
-        //   const sdp = decompressFromBase64(full);
-        //   if (!sdp) return alert('❌ Ошибка распаковки SDP');
-        //
-        //   const answerDesc = new RTCSessionDescription(JSON.parse(sdp));
-        //   peerRef.current!.setRemoteDescription(answerDesc);
-        //   logMsg('✅ Ответ принят');
-        // }
-      },
-      (err) => logMsg(`QR error: ${err}`),
-    );
+    // scanner.render(
+    //   (decoded) => {
+    // answerChunks.push(decoded);
+    // if (decoded.endsWith('#END')) {
+    //   scanner.clear();
+    //   const full = answerChunks.join('').replace('#END', '');
+    //   const sdp = decompressFromBase64(full);
+    //   if (!sdp) return alert('❌ Ошибка распаковки SDP');
+    //
+    //   const answerDesc = new RTCSessionDescription(JSON.parse(sdp));
+    //   peerRef.current!.setRemoteDescription(answerDesc);
+    //   logMsg('✅ Ответ принят');
+    // }
+    // },
+    // (err) => logMsg(`QR error: ${err}`),
+    // );
   };
 
   const getSdp = (text: string, sdpChunks: any) => {
@@ -164,24 +166,20 @@ export default function WebRtcQR2() {
     console.log('📷 Отсканировано:', current);
     console.log('📷 Отсканировано:', totalParts);
     console.log('📷 Отсканировано:', data);
-    offerChunks[current] = data;
+    sdpChunks[current] = data;
+    console.log(sdpChunks);
 
-    if (Object.keys(offerChunks).length === totalParts) {
-      const concatenated = Object.keys(offerChunks)
+    if (Object.keys(sdpChunks).length === totalParts) {
+      const concatenated = Object.keys(sdpChunks)
         .sort()
         .reduce((sum, prev) => {
-          sum += offerChunks[parseInt(prev)];
+          sum += sdpChunks[parseInt(prev)];
           return sum;
         }, '');
       const sdp = decompressFromBase64(concatenated);
-      setScanning(false);
-      const offerDesc = new RTCSessionDescription(JSON.parse(sdp));
-      console.log(offerDesc);
-      peerRef.current!.setRemoteDescription(offerDesc).then(async () => {
-        const answer = await peerRef.current!.createAnswer();
-        await peerRef.current!.setLocalDescription(answer);
-      });
+      return sdp;
     }
+    return null;
   };
   return (
     <div style={{ padding: 16, maxWidth: 600 }}>
@@ -191,7 +189,28 @@ export default function WebRtcQR2() {
         <QrScanner
           key={'scan'}
           onScan={(text) => {
-            handleOfferScan(text);
+            if (mode === 'answerer') {
+              const sdp = getSdp(text, offerChunks);
+
+              if (sdp) {
+                debugger;
+                setScanning(false);
+                const offerDesc = new RTCSessionDescription(JSON.parse(sdp));
+                console.log(offerDesc);
+                peerRef.current!.setRemoteDescription(offerDesc).then(async () => {
+                  const answer = await peerRef.current!.createAnswer();
+                  await peerRef.current!.setLocalDescription(answer);
+                });
+              }
+            }
+            if (mode === 'offerer') {
+              const sdp = getSdp(text, answerChunks);
+              if (sdp) {
+                setScanning(false);
+                const answerDesc = new RTCSessionDescription(JSON.parse(sdp));
+                peerRef.current!.setRemoteDescription(answerDesc);
+              }
+            }
           }}
         />
       )}

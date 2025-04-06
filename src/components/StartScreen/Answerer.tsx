@@ -7,8 +7,8 @@ export const Answerer = ({ qrChunks }: { qrChunks: any[] }) => {
   const [delay, setDelay] = useState(1000);
 
   useInterval(async () => {
-    const rem = visibleQr % (qrChunks.length - 1);
-    setVisibleQr(rem + 1);
+    const rem = (visibleQr + 1) % qrChunks.length;
+    setVisibleQr(rem);
   }, delay);
 
   return (
