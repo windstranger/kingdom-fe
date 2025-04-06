@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import { compressToBase64, decompressFromBase64 } from 'lz-string';
-import { Html5QrcodeScanner } from 'html5-qrcode';
 import { QrScanner } from './QrScanner';
 import { Answerer } from './Answerer';
 
@@ -55,7 +54,6 @@ export default function WebRtcQR2() {
   >([]);
   const [channelState, setChannelState] = useState('closed');
   const [log, setLog] = useState<string[]>([]);
-  // const [scannerVisible, setScannerVisible] = useState(false);
 
   const peerRef = useRef<RTCPeerConnection>();
   const dataChannelRef = useRef<RTCDataChannel>();
@@ -68,9 +66,6 @@ export default function WebRtcQR2() {
       if (!e.candidate && pc.localDescription) {
         const compressed = compressToBase64(JSON.stringify(pc.localDescription));
         const chunks = splitDataIntoChunks(compressed, 300); // 400 symbols max per chunk
-
-        // const chunks = compressed.match(/.{1,400}/g) || [];
-        // chunks[chunks.length - 1] += '#END';
         setQrChunks(chunks);
       }
     };
@@ -108,53 +103,11 @@ export default function WebRtcQR2() {
   const startAsAnswerer = () => {
     setScanning(true);
     setMode('answerer');
-    // setScannerVisible(true);
     setupPeer();
-    // const scanner = new Html5QrcodeScanner('reader', { fps: 10, qrbox: 250 }, false);
-
-    // scanner.render(
-    //   (decoded) => {
-    //     console.log(decoded);
-    //     debugger
-    // offerChunks.push(decoded);
-    // if (decoded.endsWith('#END')) {
-    //   scanner.clear();
-    //   const full = offerChunks.join('').replace('#END', '');
-    //   const sdp = decompressFromBase64(full);
-    //   if (!sdp) return alert('❌ Ошибка распаковки SDP');
-    //
-    //   const offerDesc = new RTCSessionDescription(JSON.parse(sdp));
-    //   peerRef.current!.setRemoteDescription(offerDesc).then(async () => {
-    //     const answer = await peerRef.current!.createAnswer();
-    //     await peerRef.current!.setLocalDescription(answer);
-    //   });
-    // }
-    // },
-    // (err) => logMsg(`QR error: ${err}`),
-    // );
   };
 
   const handleAnswerScan = () => {
     setScanning(true);
-    // const scanner = new Html5QrcodeScanner('reader', { fps: 10, qrbox: 250 }, false);
-    // const answerChunks: string[] = [];
-
-    // scanner.render(
-    //   (decoded) => {
-    // answerChunks.push(decoded);
-    // if (decoded.endsWith('#END')) {
-    //   scanner.clear();
-    //   const full = answerChunks.join('').replace('#END', '');
-    //   const sdp = decompressFromBase64(full);
-    //   if (!sdp) return alert('❌ Ошибка распаковки SDP');
-    //
-    //   const answerDesc = new RTCSessionDescription(JSON.parse(sdp));
-    //   peerRef.current!.setRemoteDescription(answerDesc);
-    //   logMsg('✅ Ответ принят');
-    // }
-    // },
-    // (err) => logMsg(`QR error: ${err}`),
-    // );
   };
 
   const getSdp = (text: string, sdpChunks: any) => {
@@ -176,8 +129,7 @@ export default function WebRtcQR2() {
           sum += sdpChunks[parseInt(prev)];
           return sum;
         }, '');
-      const sdp = decompressFromBase64(concatenated);
-      return sdp;
+      return decompressFromBase64(concatenated);
     }
     return null;
   };
@@ -191,9 +143,7 @@ export default function WebRtcQR2() {
           onScan={(text) => {
             if (mode === 'answerer') {
               const sdp = getSdp(text, offerChunks);
-
               if (sdp) {
-                debugger;
                 setScanning(false);
                 const offerDesc = new RTCSessionDescription(JSON.parse(sdp));
                 console.log(offerDesc);
@@ -217,21 +167,25 @@ export default function WebRtcQR2() {
 
       {mode === 'idle' && (
         <>
-          <button onClick={startAsOfferer}>🟢 Я инициатор (offerer)</button>
-          <button onClick={startAsAnswerer}>🔵 Я ответчик (answerer)</button>
+          <button className={'btn btn-info'} onClick={startAsOfferer}>
+            🟢 Я инициатор (offerer)
+          </button>
+          <button className={'btn btn-primary'} onClick={startAsAnswerer}>
+            🔵 Я ответчик (answerer)
+          </button>
         </>
       )}
 
-      {mode === 'offerer' && qrChunks.length > 0 && (
+      {mode === 'offerer' && channelState !== 'open' && qrChunks.length > 0 && (
         <>
           <Answerer qrChunks={qrChunks} />
           <button onClick={handleAnswerScan}>📥 Сканировать ответ</button>
         </>
       )}
 
-      {mode === 'answerer' && qrChunks.length > 0 && <Answerer qrChunks={qrChunks} />}
-
-      {/*{scannerVisible && <div id="reader" style={{ width: 300, marginTop: 20 }}></div>}*/}
+      {mode === 'answerer' && channelState !== 'open' && qrChunks.length > 0 && (
+        <Answerer qrChunks={qrChunks} />
+      )}
 
       {channelState === 'open' && (
         <div>
