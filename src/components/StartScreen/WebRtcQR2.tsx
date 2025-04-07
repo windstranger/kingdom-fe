@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { compressToBase64, decompressFromBase64 } from 'lz-string';
 import { QrScanner } from './QrScanner';
 import { Answerer } from './Answerer';
@@ -59,6 +59,31 @@ export default function WebRtcQR2() {
   const dataChannelRef = useRef<RTCDataChannel>();
   const offerChunks: OfferChunks = useRef({}).current;
   const answerChunks: OfferChunks = useRef({}).current;
+
+  const onQrScannerScan = useCallback(
+    (text: string) => {
+      if (mode === 'answerer') {
+        const sdp = getSdp(text, offerChunks);
+        if (sdp) {
+          setScanning(false);
+          const offerDesc = new RTCSessionDescription(JSON.parse(sdp));
+          peerRef.current!.setRemoteDescription(offerDesc).then(async () => {
+            const answer = await peerRef.current!.createAnswer();
+            await peerRef.current!.setLocalDescription(answer);
+          });
+        }
+      }
+      if (mode === 'offerer') {
+        const sdp = getSdp(text, answerChunks);
+        if (sdp) {
+          setScanning(false);
+          const answerDesc = new RTCSessionDescription(JSON.parse(sdp));
+          peerRef.current!.setRemoteDescription(answerDesc);
+        }
+      }
+    },
+    [mode, offerChunks, answerChunks],
+  );
 
   const setupPeer = () => {
     const pc = new RTCPeerConnection(config);
@@ -133,36 +158,14 @@ export default function WebRtcQR2() {
     }
     return null;
   };
+  useEffect(() => {
+    console.log('rerenders parent');
+  }, []);
   return (
     <div style={{ padding: 16, maxWidth: 600 }}>
       <h2>📡 WebRTC P2P через QR</h2>
 
-      {scanning && (
-        <QrScanner
-          key={'scan'}
-          onScan={(text) => {
-            if (mode === 'answerer') {
-              const sdp = getSdp(text, offerChunks);
-              if (sdp) {
-                setScanning(false);
-                const offerDesc = new RTCSessionDescription(JSON.parse(sdp));
-                peerRef.current!.setRemoteDescription(offerDesc).then(async () => {
-                  const answer = await peerRef.current!.createAnswer();
-                  await peerRef.current!.setLocalDescription(answer);
-                });
-              }
-            }
-            if (mode === 'offerer') {
-              const sdp = getSdp(text, answerChunks);
-              if (sdp) {
-                setScanning(false);
-                const answerDesc = new RTCSessionDescription(JSON.parse(sdp));
-                peerRef.current!.setRemoteDescription(answerDesc);
-              }
-            }
-          }}
-        />
-      )}
+      {scanning && <QrScanner key={'scan'} onScan={onQrScannerScan} />}
 
       {mode === 'idle' && (
         <>
