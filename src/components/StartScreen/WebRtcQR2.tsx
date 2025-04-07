@@ -98,6 +98,7 @@ export default function WebRtcQR2() {
     pc.ondatachannel = (e) => {
       logMsg('💬 Получен data channel');
       const ch = e.channel;
+      dataChannelRef.current = ch;
       ch.onopen = () => {
         logMsg('🟢 Канал открыт');
         setChannelState('open');
@@ -192,7 +193,7 @@ export default function WebRtcQR2() {
       {channelState === 'open' && (
         <div>
           <h3>✅ Соединение установлено!</h3>
-          <button onClick={() => dataChannelRef.current?.send('👋 Привет')}>
+          <button onClick={() => dataChannelRef.current?.send('👋 Привет ' + mode)}>
             Отправить "Привет"
           </button>
         </div>
