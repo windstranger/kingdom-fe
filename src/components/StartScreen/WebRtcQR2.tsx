@@ -2,28 +2,12 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { compressToBase64, decompressFromBase64 } from 'lz-string';
 import { QrScanner } from './QrScanner';
 import { Answerer } from './Answerer';
+import { useAtom, useAtomValue } from 'jotai';
+import { stateAtom } from '../../atoms/stateAtom';
+import { playersAtom } from '../../atoms/playerAtoms';
 
 // const config = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
 const config = { iceServers: [] };
-
-// function reconstructString(qrDataArray: string[]) {
-//   let reconstructedString = '';
-//   const totalParts = parseInt(qrDataArray[0].split('|')[1].split('/')[1]); // Читаем количество частей
-//
-//   // Сортируем части, если они не пришли по порядку
-//   const sortedChunks = qrDataArray.sort((a, b) => {
-//     const partA = parseInt(a.split('|')[1].split('/')[0]);
-//     const partB = parseInt(b.split('|')[1].split('/')[0]);
-//     return partA - partB;
-//   });
-//
-//   // Восстанавливаем строку
-//   sortedChunks.forEach((data) => {
-//     reconstructedString += data.split('|')[0];
-//   });
-//
-//   return reconstructedString;
-// }
 
 type Mode = 'idle' | 'offerer' | 'answerer' | 'connected';
 
@@ -47,6 +31,10 @@ type OfferChunks = { [key: number]: string };
 
 export default function WebRtcQR2() {
   const [mode, setMode] = useState<Mode>('idle');
+  const playerName = useAtomValue(stateAtom);
+  const [players, setPlayers] = useAtom(playersAtom);
+  console.log('players', players);
+  console.log(playerName);
 
   const [scanning, setScanning] = useState(false);
   const [qrChunks, setQrChunks] = useState<
@@ -66,19 +54,41 @@ export default function WebRtcQR2() {
         const sdp = getSdp(text, offerChunks);
         if (sdp) {
           setScanning(false);
-          const offerDesc = new RTCSessionDescription(JSON.parse(sdp));
+          const sdpJSON = JSON.parse(sdp);
+          const offerDesc = new RTCSessionDescription(sdpJSON?.desc);
           peerRef.current!.setRemoteDescription(offerDesc).then(async () => {
             const answer = await peerRef.current!.createAnswer();
             await peerRef.current!.setLocalDescription(answer);
+          });
+          setPlayers((players) => {
+            return {
+              ...players,
+              [sdpJSON.name]: {
+                pc: peerRef.current,
+                name: sdpJSON.name,
+                dc: dataChannelRef.current,
+              },
+            };
           });
         }
       }
       if (mode === 'offerer') {
         const sdp = getSdp(text, answerChunks);
         if (sdp) {
+          const sdpJSON = JSON.parse(sdp);
           setScanning(false);
-          const answerDesc = new RTCSessionDescription(JSON.parse(sdp));
+          const answerDesc = new RTCSessionDescription(sdpJSON?.desc);
           peerRef.current!.setRemoteDescription(answerDesc);
+          setPlayers((players) => {
+            return {
+              ...players,
+              [sdpJSON.name]: {
+                pc: peerRef.current,
+                name: sdpJSON.name,
+                dc: dataChannelRef.current,
+              },
+            };
+          });
         }
       }
     },
@@ -89,7 +99,9 @@ export default function WebRtcQR2() {
     const pc = new RTCPeerConnection(config);
     pc.onicecandidate = (e) => {
       if (!e.candidate && pc.localDescription) {
-        const compressed = compressToBase64(JSON.stringify(pc.localDescription));
+        const compressed = compressToBase64(
+          JSON.stringify({ desc: pc.localDescription, name: playerName }),
+        );
         const chunks = splitDataIntoChunks(compressed, 300); // 400 symbols max per chunk
         setQrChunks(chunks);
       }

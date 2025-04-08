@@ -1,9 +1,11 @@
 import './App.css';
-// import { StartScreen } from './components/StartScreen/StartScreen.jsx';
-import { Route, BrowserRouter as Router, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 import { RoomScreen } from './components/RoomScreen/RoomScreen.jsx';
 import { GameScreen } from './components/GameScreen/GameScreen.jsx';
-import WebRtcQR2 from './components/StartScreen/WebRtcQR2.tsx';
+// import WebRtcQR2 from './components/StartScreen/WebRtcQR2.tsx';
+import { StartScreen } from './components/StartScreen/StartScreen';
+import WebRtcQR2 from './components/StartScreen/WebRtcQR2';
+import { InternetWebRtc } from './components/StartScreen/InternetWebRTC';
 
 function App() {
   return (
@@ -20,9 +22,9 @@ function App() {
         <Routes>
           <Route path={'/game'} element={<GameScreen />}></Route>
           <Route path={'/room'} element={<RoomScreen />}></Route>
-          {/*<Route path={'/'} element={<StartScreen />}></Route>*/}
-          {/*<Route path={'/'} element={<WebRtcQR />}></Route>*/}
-          <Route path={'/'} element={<WebRtcQR2 />}></Route>
+          <Route path={'/webrtc'} element={<WebRtcQR2 />}></Route>
+          <Route path={'/internet'} element={<InternetWebRtc />}></Route>
+          <Route path={'/'} element={<StartScreen />}></Route>
         </Routes>
       </Router>
     </>

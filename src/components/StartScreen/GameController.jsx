@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef } from 'react';
-import { Game, gameAtom } from '../../atoms/stateAtom.js';
+import { gameAtom } from '../../atoms/stateAtom.js';
 import { useAtom } from 'jotai';
+import { Game } from '../../atoms/game.js';
 
 export const GameController = () => {
   const [, setGame] = useAtom(gameAtom);

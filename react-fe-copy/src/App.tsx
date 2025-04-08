@@ -1,13 +1,12 @@
-import './App.css'
-import EnterLobby from "../../src/EnterLobby.tsx";
+import './App.css';
+import EnterLobby from 'EnterLobby';
 
 function App() {
-
   return (
     <>
-        <EnterLobby/>
+      <EnterLobby />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
