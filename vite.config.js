@@ -2,8 +2,12 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import viteBasicSslPlugin from '@vitejs/plugin-basic-ssl';
 import tailwindcss from '@tailwindcss/vite';
+// import basicSsl from '@vitejs/plugin-basic-ssl';
 import { VitePWA } from 'vite-plugin-pwa';
-// https://vitejs.dev/config/
+import fs from 'fs';
+
+const key = fs.readFileSync('./192.168.0.174-key.pem');
+const cert = fs.readFileSync('./192.168.0.174.pem');
 export default defineConfig({
   plugins: [
     react(),
@@ -11,33 +15,39 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
-      devOptions: {
-        enabled: true,
-      },
+      includeAssets: ['favicon.svg', 'robots.txt', 'icon-192.png', 'icon-512.png'],
       manifest: {
         name: 'WebRTC PWA Chat',
-        short_name: 'PWA Chat',
+        short_name: 'Chat',
         start_url: '/',
         display: 'standalone',
-        background_color: '#ffffff',
+        background_color: '#fff',
         theme_color: '#0d6efd',
-        icons: [
+        icons: [],
+      },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+        runtimeCaching: [
           {
-            src: '/icon-192.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-          {
-            src: '/icon-512.png',
-            sizes: '512x512',
-            type: 'image/png',
+            urlPattern: ({ url }) => true,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'offline-cache',
+              expiration: {
+                maxEntries: 200,
+              },
+            },
           },
         ],
       },
     }),
   ],
   server: {
-    https: true,
+    // https: true,
+    https: {
+      key,
+      cert,
+    },
     host: true,
   },
   resolve: {

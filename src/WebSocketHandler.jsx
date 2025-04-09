@@ -1,11 +1,13 @@
 import React, { memo, useEffect, useRef, useState } from 'react';
 import useWebSocket from 'react-use-websocket';
 import { PlayerConnection } from './PlayerConnection.js';
-import { useAtom, useSetAtom } from 'jotai';
+import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import {
   playerConnectionsAtom,
   playerMessagesAtom,
   playersAtom,
+  stateAtom,
+  websocketAddressAtom,
   websocketAtom,
 } from './atoms/stateAtom.js';
 
@@ -26,12 +28,14 @@ export const useWebRtcHandlers = () => {
   };
   return webrtcHandlers;
 };
-const WebSocketHandler = memo(({ playerName }) => {
+const WebSocketHandler = memo(() => {
+  const [playerName, setPlayerName] = useAtom(stateAtom);
+  const websocketAddress = useAtomValue(websocketAddressAtom);
   const [playerConnections, setPlayerConnections] = useAtom(playerConnectionsAtom);
   const setPlayers = useSetAtom(playersAtom);
   // const socketUrl = `ws://192.168.0.10:8765/?playerName=${playerName}`
   // const socketUrl = `ws://194.87.235.155:8765/?playerName=${playerName}`;
-  const socketUrl = `ws://127.0.0.1:8765/?playerName=${playerName}`;
+  const socketUrl = `${websocketAddress}/?playerName=${playerName}`;
 
   const webrtcHandlers = useWebRtcHandlers();
 
@@ -51,6 +55,7 @@ const WebSocketHandler = memo(({ playerName }) => {
           console.log(data.message);
           // setPlayers(data.data)
         }
+        debugger;
         if (data.type === 'players') {
           const nPlayers = data.data.filter((p) => p.playerName !== playerName);
           setPlayers(nPlayers);

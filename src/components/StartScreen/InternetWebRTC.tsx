@@ -26,7 +26,7 @@ export const InternetWebRtc = () => {
       >
         event
       </Button>
-      <WebSocketHandler playerName={playerName} />
+      <WebSocketHandler />
       {!serverCreated ? (
         <WaitingRoom createServer={createServer} playerName={playerName} />
       ) : (

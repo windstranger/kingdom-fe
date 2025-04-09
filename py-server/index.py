@@ -4,6 +4,10 @@ import asyncio
 import json
 import uuid
 from urllib.parse import urlparse, parse_qs
+import ssl
+
+ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+ssl_context.load_cert_chain(certfile="./cert.pem", keyfile="./key.pem")
 
 from websockets.server import serve
 
@@ -39,6 +43,7 @@ async def echo(websocket):
         if not existing_player:
             connections.append(Player(websocket, playerName))
             players = [connection.info for connection in connections]
+            print(players)
             await broadCastMessage({"data": players, "type": "players"})
         else:
             await websocket.send(json.dumps({"message": "player exists", "type": "error"}))
@@ -80,7 +85,7 @@ async def echo(websocket):
 
 
 async def main():
-    async with serve(echo, "127.0.0.1", 8765):
+    async with serve(echo, "0.0.0.0", 8765, ssl=ssl_context):
         await asyncio.Future()  # run forever
 
 
