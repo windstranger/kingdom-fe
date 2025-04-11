@@ -9,12 +9,14 @@ import { InternetWebRtc } from './components/StartScreen/InternetWebRTC';
 import { SettingsScreen } from './components/SettingsScreen/SettingsScreen';
 import { TestScreen } from './components/TestScreen';
 import { WebsocketComponent } from './components/StartScreen/WebsocketComponent';
+import { PlayerControl } from './components/StartScreen/PlayerControl';
 
 function App() {
   return (
     <>
       <Router>
         <div className={'flex gap-4'}>
+          <PlayerControl />
           <Link className={'underline text-blue-400'} to={'/'}>
             home
           </Link>

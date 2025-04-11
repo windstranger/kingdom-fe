@@ -3,7 +3,9 @@ import { useAtom, useAtomValue } from 'jotai';
 import { connectedUsersAtom, stateAtom, websocketAddressAtom } from '../../atoms/stateAtom';
 import useWebSocket from 'react-use-websocket';
 import { playersAtom } from '../../atoms/playerAtoms';
+import { toast } from 'react-toastify';
 
+import { useNavigate } from 'react-router-dom';
 // stun:stun.l.google.com:19302
 // urls: ['stun:194.87.235.155:3478'],
 const rtcConfig = {
@@ -25,6 +27,16 @@ export const WebsocketComponent = () => {
   const peerRef = useRef<RTCPeerConnection>();
   const dataChannelRef = useRef<RTCDataChannel>();
   const [players, setPlayers] = useAtom(playersAtom);
+  const navigate = useNavigate();
+
+  const messageHandler = useCallback((event: any) => {
+    const eventData = JSON.parse(event.data);
+    console.log('📩 Received:', event.data);
+    if (eventData.type === 'start_game') {
+      toast('game started');
+      navigate('/game');
+    }
+  }, []);
 
   const webSocket = useWebSocket(`${wsAddress}/?playerName=${playerName}`, {
     onOpen: () => {
@@ -46,7 +58,6 @@ export const WebsocketComponent = () => {
     // shouldReconnect: (closeEvent) => true,
     onMessage: async (msg) => {
       console.log(msg);
-
       const data = JSON.parse(msg.data);
       console.log(data);
 
@@ -79,7 +90,7 @@ export const WebsocketComponent = () => {
                 };
               });
             };
-            dataChannel.onmessage = (event) => console.log('📩 Received:', event.data);
+            dataChannel.onmessage = (event) => messageHandler(event);
             dataChannelRef.current = dataChannel;
           };
           // Send ICE candidates during the offer-answer process
@@ -151,7 +162,9 @@ export const WebsocketComponent = () => {
     const peerConnection = new RTCPeerConnection(rtcConfig);
     const dataChannel = peerConnection.createDataChannel('chat');
     dataChannel.onopen = () => console.log('📡 DataChannel opened');
-    dataChannel.onmessage = (event) => console.log('📩 Received:', event.data);
+    dataChannel.onmessage = (event) => {
+      messageHandler(event);
+    };
 
     const offer = await peerConnection.createOffer();
     await peerConnection.setLocalDescription(offer);
