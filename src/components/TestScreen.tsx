@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import useWebSocket from 'react-use-websocket';
+import { useAtomValue } from 'jotai';
+import { stateAtom, websocketAddressAtom } from '../atoms/stateAtom';
 
 export const TestScreen = () => {
   const [msg, setMsg] = useState<string>('');
-  const webSocket = useWebSocket('wss://192.168.0.174:7777', {
+  const wsAddress = useAtomValue(websocketAddressAtom);
+  const playerName = useAtomValue(stateAtom);
+  const webSocket = useWebSocket(`${wsAddress}/?playerName=${playerName}`, {
     onOpen: () => {
       setMsg('opened');
       console.log('opened');

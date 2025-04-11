@@ -55,7 +55,6 @@ const WebSocketHandler = memo(() => {
           console.log(data.message);
           // setPlayers(data.data)
         }
-        debugger;
         if (data.type === 'players') {
           const nPlayers = data.data.filter((p) => p.playerName !== playerName);
           setPlayers(nPlayers);

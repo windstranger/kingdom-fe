@@ -14,3 +14,5 @@ export const serverPlayerConnection = atom();
 export const mySettings = atom([]);
 
 export const websocketAddressAtom = atomWithLocalStorage('websocket', 'ws://127.0.0.1:8765');
+
+export const connectedUsersAtom = atom([]);

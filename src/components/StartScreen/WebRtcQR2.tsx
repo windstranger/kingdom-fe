@@ -146,6 +146,13 @@ export default function WebRtcQR2() {
 
   const handleAnswerScan = () => {
     setScanning(true);
+    window.navigator.mediaDevices
+      .getUserMedia({ video: true })
+      .then((stream) => {
+        console.log('all good');
+        // (video.srcObject = stream)
+      })
+      .catch((err) => console.error('ошибка камеры', err));
   };
 
   const getSdp = (text: string, sdpChunks: any) => {
@@ -176,10 +183,9 @@ export default function WebRtcQR2() {
   }, []);
   return (
     <div style={{ padding: 16, maxWidth: 600 }}>
+      insecure: {window.isSecureContext}
       <h2>📡 WebRTC P2P через QR</h2>
-
       {scanning && <QrScanner key={'scan'} onScan={onQrScannerScan} />}
-
       {mode === 'idle' && (
         <>
           <button className={'btn btn-info'} onClick={startAsOfferer}>
@@ -190,18 +196,15 @@ export default function WebRtcQR2() {
           </button>
         </>
       )}
-
       {mode === 'offerer' && channelState !== 'open' && qrChunks.length > 0 && (
         <>
           <Answerer qrChunks={qrChunks} />
           <button onClick={handleAnswerScan}>📥 Сканировать ответ</button>
         </>
       )}
-
       {mode === 'answerer' && channelState !== 'open' && qrChunks.length > 0 && (
         <Answerer qrChunks={qrChunks} />
       )}
-
       {channelState === 'open' && (
         <div>
           <h3>✅ Соединение установлено!</h3>
@@ -210,7 +213,6 @@ export default function WebRtcQR2() {
           </button>
         </div>
       )}
-
       <div style={{ marginTop: 20 }}>
         <h4>Лог:</h4>
         <pre style={{ background: '#eee', padding: 8, height: 150, overflow: 'auto' }}>

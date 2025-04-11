@@ -8,6 +8,7 @@ import WebRtcQR2 from './components/StartScreen/WebRtcQR2';
 import { InternetWebRtc } from './components/StartScreen/InternetWebRTC';
 import { SettingsScreen } from './components/SettingsScreen/SettingsScreen';
 import { TestScreen } from './components/TestScreen';
+import { WebsocketComponent } from './components/StartScreen/WebsocketComponent';
 
 function App() {
   return (
@@ -20,9 +21,13 @@ function App() {
           <Link className={'underline text-blue-400'} to={'/game'}>
             game
           </Link>
+          <Link className={'underline text-blue-400'} to={'/test'}>
+            test
+          </Link>
           <Link className={'underline text-blue-400'} to={'/settings'}>
             settings
           </Link>
+          <WebsocketComponent />
         </div>
         <Routes>
           <Route path={'/game'} element={<GameScreen />}></Route>
