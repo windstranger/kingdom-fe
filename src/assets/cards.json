@@ -1,0 +1,1578 @@
+{
+  "Card": [
+    {
+      "id": 1,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 1,
+        "y": "a"
+      },
+      "cardImage": "card_a_1"
+    },
+    {
+      "id": 2,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 2,
+        "y": "a"
+      },
+      "cardImage": "card_a_2"
+    },
+    {
+      "id": 3,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 3,
+        "y": "a"
+      },
+      "cardImage": "card_a_3"
+    },
+    {
+      "id": 4,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 4,
+        "y": "a"
+      },
+      "cardImage": "card_a_4"
+    },
+    {
+      "id": 5,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 5,
+        "y": "a"
+      },
+      "cardImage": "card_a_5"
+    },
+    {
+      "id": 6,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 6,
+        "y": "a"
+      },
+      "cardImage": "card_a_6"
+    },
+    {
+      "id": 7,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 7,
+        "y": "a"
+      },
+      "cardImage": "card_a_7"
+    },
+    {
+      "id": 8,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 8,
+        "y": "a"
+      },
+      "cardImage": "card_a_8"
+    },
+    {
+      "id": 9,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 9,
+        "y": "a"
+      },
+      "cardImage": "card_a_9"
+    },
+    {
+      "id": 10,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 10,
+        "y": "a"
+      },
+      "cardImage": "card_a_10"
+    },
+    {
+      "id": 11,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 1,
+        "y": "b"
+      },
+      "cardImage": "card_b_1"
+    },
+    {
+      "id": 12,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 2,
+        "y": "b"
+      },
+      "cardImage": "card_b_2"
+    },
+    {
+      "id": 13,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 3,
+        "y": "b"
+      },
+      "cardImage": "card_b_3"
+    },
+    {
+      "id": 14,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 4,
+        "y": "b"
+      },
+      "cardImage": "card_b_4"
+    },
+    {
+      "id": 15,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 5,
+        "y": "b"
+      },
+      "cardImage": "card_b_5"
+    },
+    {
+      "id": 16,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 6,
+        "y": "b"
+      },
+      "cardImage": "card_b_6"
+    },
+    {
+      "id": 17,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 7,
+        "y": "b"
+      },
+      "cardImage": "card_b_7"
+    },
+    {
+      "id": 18,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 8,
+        "y": "b"
+      },
+      "cardImage": "card_b_8"
+    },
+    {
+      "id": 19,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 9,
+        "y": "b"
+      },
+      "cardImage": "card_b_9"
+    },
+    {
+      "id": 20,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 10,
+        "y": "b"
+      },
+      "cardImage": "card_b_10"
+    },
+    {
+      "id": 21,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 1,
+        "y": "c"
+      },
+      "cardImage": "card_c_1"
+    },
+    {
+      "id": 22,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 2,
+        "y": "c"
+      },
+      "cardImage": "card_c_2"
+    },
+    {
+      "id": 23,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 3,
+        "y": "c"
+      },
+      "cardImage": "card_c_3"
+    },
+    {
+      "id": 24,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 4,
+        "y": "c"
+      },
+      "cardImage": "card_c_4"
+    },
+    {
+      "id": 25,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 5,
+        "y": "c"
+      },
+      "cardImage": "card_c_5"
+    },
+    {
+      "id": 26,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 6,
+        "y": "c"
+      },
+      "cardImage": "card_c_6"
+    },
+    {
+      "id": 27,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 7,
+        "y": "c"
+      },
+      "cardImage": "card_c_7"
+    },
+    {
+      "id": 28,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 8,
+        "y": "c"
+      },
+      "cardImage": "card_c_8"
+    },
+    {
+      "id": 29,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 9,
+        "y": "c"
+      },
+      "cardImage": "card_c_9"
+    },
+    {
+      "id": 30,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 10,
+        "y": "c"
+      },
+      "cardImage": "card_c_10"
+    },
+    {
+      "id": 31,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 1,
+        "y": "d"
+      },
+      "cardImage": "card_d_1"
+    },
+    {
+      "id": 32,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 2,
+        "y": "d"
+      },
+      "cardImage": "card_d_2"
+    },
+    {
+      "id": 33,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 3,
+        "y": "d"
+      },
+      "cardImage": "card_d_3"
+    },
+    {
+      "id": 34,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 4,
+        "y": "d"
+      },
+      "cardImage": "card_d_4"
+    },
+    {
+      "id": 35,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 5,
+        "y": "d"
+      },
+      "cardImage": "card_d_5"
+    },
+    {
+      "id": 36,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 6,
+        "y": "d"
+      },
+      "cardImage": "card_d_6"
+    },
+    {
+      "id": 37,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 7,
+        "y": "d"
+      },
+      "cardImage": "card_d_7"
+    },
+    {
+      "id": 38,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 8,
+        "y": "d"
+      },
+      "cardImage": "card_d_8"
+    },
+    {
+      "id": 39,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 9,
+        "y": "d"
+      },
+      "cardImage": "card_d_9"
+    },
+    {
+      "id": 40,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 10,
+        "y": "d"
+      },
+      "cardImage": "card_d_10"
+    },
+    {
+      "id": 41,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 1,
+        "y": "e"
+      },
+      "cardImage": "card_e_1"
+    },
+    {
+      "id": 42,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 2,
+        "y": "e"
+      },
+      "cardImage": "card_e_2"
+    },
+    {
+      "id": 43,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 3,
+        "y": "e"
+      },
+      "cardImage": "card_e_3"
+    },
+    {
+      "id": 44,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 4,
+        "y": "e"
+      },
+      "cardImage": "card_e_4"
+    },
+    {
+      "id": 45,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 5,
+        "y": "e"
+      },
+      "cardImage": "card_e_5"
+    },
+    {
+      "id": 46,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 6,
+        "y": "e"
+      },
+      "cardImage": "card_e_6"
+    },
+    {
+      "id": 47,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 7,
+        "y": "e"
+      },
+      "cardImage": "card_e_7"
+    },
+    {
+      "id": 48,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 8,
+        "y": "e"
+      },
+      "cardImage": "card_e_8"
+    },
+    {
+      "id": 49,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 9,
+        "y": "e"
+      },
+      "cardImage": "card_e_9"
+    },
+    {
+      "id": 50,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 10,
+        "y": "e"
+      },
+      "cardImage": "card_e_10"
+    },
+    {
+      "id": 51,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 1,
+        "y": "f"
+      },
+      "cardImage": "card_f_1"
+    },
+    {
+      "id": 52,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 2,
+        "y": "f"
+      },
+      "cardImage": "card_f_2"
+    },
+    {
+      "id": 53,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 3,
+        "y": "f"
+      },
+      "cardImage": "card_f_3"
+    },
+    {
+      "id": 54,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 4,
+        "y": "f"
+      },
+      "cardImage": "card_f_4"
+    },
+    {
+      "id": 55,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 5,
+        "y": "f"
+      },
+      "cardImage": "card_f_5"
+    },
+    {
+      "id": 56,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 6,
+        "y": "f"
+      },
+      "cardImage": "card_f_6"
+    },
+    {
+      "id": 57,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 7,
+        "y": "f"
+      },
+      "cardImage": "card_f_7"
+    },
+    {
+      "id": 58,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 8,
+        "y": "f"
+      },
+      "cardImage": "card_f_8"
+    },
+    {
+      "id": 59,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 9,
+        "y": "f"
+      },
+      "cardImage": "card_f_9"
+    },
+    {
+      "id": 60,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 10,
+        "y": "f"
+      },
+      "cardImage": "card_f_10"
+    },
+    {
+      "id": 61,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 1,
+        "y": "g"
+      },
+      "cardImage": "card_g_1"
+    },
+    {
+      "id": 62,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 2,
+        "y": "g"
+      },
+      "cardImage": "card_g_2"
+    },
+    {
+      "id": 63,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 3,
+        "y": "g"
+      },
+      "cardImage": "card_g_3"
+    },
+    {
+      "id": 64,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 4,
+        "y": "g"
+      },
+      "cardImage": "card_g_4"
+    },
+    {
+      "id": 65,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 5,
+        "y": "g"
+      },
+      "cardImage": "card_g_5"
+    },
+    {
+      "id": 66,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 6,
+        "y": "g"
+      },
+      "cardImage": "card_g_6"
+    },
+    {
+      "id": 67,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 7,
+        "y": "g"
+      },
+      "cardImage": "card_g_7"
+    },
+    {
+      "id": 68,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 8,
+        "y": "g"
+      },
+      "cardImage": "card_g_8"
+    },
+    {
+      "id": 69,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 9,
+        "y": "g"
+      },
+      "cardImage": "card_g_9"
+    },
+    {
+      "id": 70,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 10,
+        "y": "g"
+      },
+      "cardImage": "card_g_10"
+    },
+    {
+      "id": 71,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 1,
+        "y": "h"
+      },
+      "cardImage": "card_h_1"
+    },
+    {
+      "id": 72,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 2,
+        "y": "h"
+      },
+      "cardImage": "card_h_2"
+    },
+    {
+      "id": 73,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 3,
+        "y": "h"
+      },
+      "cardImage": "card_h_3"
+    },
+    {
+      "id": 74,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 4,
+        "y": "h"
+      },
+      "cardImage": "card_h_4"
+    },
+    {
+      "id": 75,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 5,
+        "y": "h"
+      },
+      "cardImage": "card_h_5"
+    },
+    {
+      "id": 76,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 6,
+        "y": "h"
+      },
+      "cardImage": "card_h_6"
+    },
+    {
+      "id": 77,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 7,
+        "y": "h"
+      },
+      "cardImage": "card_h_7"
+    },
+    {
+      "id": 78,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 8,
+        "y": "h"
+      },
+      "cardImage": "card_h_8"
+    },
+    {
+      "id": 79,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 9,
+        "y": "h"
+      },
+      "cardImage": "card_h_9"
+    },
+    {
+      "id": 80,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 10,
+        "y": "h"
+      },
+      "cardImage": "card_h_10"
+    },
+    {
+      "id": 81,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 1,
+        "y": "i"
+      },
+      "cardImage": "card_i_1"
+    },
+    {
+      "id": 82,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 2,
+        "y": "i"
+      },
+      "cardImage": "card_i_2"
+    },
+    {
+      "id": 83,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 3,
+        "y": "i"
+      },
+      "cardImage": "card_i_3"
+    },
+    {
+      "id": 84,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 4,
+        "y": "i"
+      },
+      "cardImage": "card_i_4"
+    },
+    {
+      "id": 85,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 5,
+        "y": "i"
+      },
+      "cardImage": "card_i_5"
+    },
+    {
+      "id": 86,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 6,
+        "y": "i"
+      },
+      "cardImage": "card_i_6"
+    },
+    {
+      "id": 87,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 7,
+        "y": "i"
+      },
+      "cardImage": "card_i_7"
+    },
+    {
+      "id": 88,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 8,
+        "y": "i"
+      },
+      "cardImage": "card_i_8"
+    },
+    {
+      "id": 89,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 9,
+        "y": "i"
+      },
+      "cardImage": "card_i_9"
+    },
+    {
+      "id": 90,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 10,
+        "y": "i"
+      },
+      "cardImage": "card_i_10"
+    },
+    {
+      "id": 91,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 1,
+        "y": "j"
+      },
+      "cardImage": "card_j_1"
+    },
+    {
+      "id": 92,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 2,
+        "y": "j"
+      },
+      "cardImage": "card_j_2"
+    },
+    {
+      "id": 93,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 3,
+        "y": "j"
+      },
+      "cardImage": "card_j_3"
+    },
+    {
+      "id": 94,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 4,
+        "y": "j"
+      },
+      "cardImage": "card_j_4"
+    },
+    {
+      "id": 95,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 5,
+        "y": "j"
+      },
+      "cardImage": "card_j_5"
+    },
+    {
+      "id": 96,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 6,
+        "y": "j"
+      },
+      "cardImage": "card_j_6"
+    },
+    {
+      "id": 97,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 7,
+        "y": "j"
+      },
+      "cardImage": "card_j_7"
+    },
+    {
+      "id": 98,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 8,
+        "y": "j"
+      },
+      "cardImage": "card_j_8"
+    },
+    {
+      "id": 99,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 9,
+        "y": "j"
+      },
+      "cardImage": "card_j_9"
+    },
+    {
+      "id": 100,
+      "cardType": "COORDINATE_TYPE",
+      "description": "coordinate card",
+      "coordinates": {
+        "x": 10,
+        "y": "j"
+      },
+      "cardImage": "card_j_10"
+    },
+    {
+      "id": 101,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_1",
+      "itemType": "TOWER_ONE_TYPE"
+    },
+    {
+      "id": 102,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_1",
+      "itemType": "TOWER_ONE_TYPE"
+    },
+    {
+      "id": 103,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_1",
+      "itemType": "TOWER_ONE_TYPE"
+    },
+    {
+      "id": 104,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_1",
+      "itemType": "TOWER_ONE_TYPE"
+    },
+    {
+      "id": 105,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_1",
+      "itemType": "TOWER_ONE_TYPE"
+    },
+    {
+      "id": 106,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_1",
+      "itemType": "TOWER_ONE_TYPE"
+    },
+    {
+      "id": 107,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_1",
+      "itemType": "TOWER_ONE_TYPE"
+    },
+    {
+      "id": 108,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_2",
+      "itemType": "TOWER_TWO_TYPE"
+    },
+    {
+      "id": 109,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_2",
+      "itemType": "TOWER_TWO_TYPE"
+    },
+    {
+      "id": 110,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_2",
+      "itemType": "TOWER_TWO_TYPE"
+    },
+    {
+      "id": 111,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_2",
+      "itemType": "TOWER_TWO_TYPE"
+    },
+    {
+      "id": 112,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_2",
+      "itemType": "TOWER_TWO_TYPE"
+    },
+    {
+      "id": 113,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_2",
+      "itemType": "TOWER_TWO_TYPE"
+    },
+    {
+      "id": 114,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_2",
+      "itemType": "TOWER_TWO_TYPE"
+    },
+    {
+      "id": 115,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_3",
+      "itemType": "TOWER_THREE_TYPE"
+    },
+    {
+      "id": 116,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_3",
+      "itemType": "TOWER_THREE_TYPE"
+    },
+    {
+      "id": 117,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_3",
+      "itemType": "TOWER_THREE_TYPE"
+    },
+    {
+      "id": 118,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_3",
+      "itemType": "TOWER_THREE_TYPE"
+    },
+    {
+      "id": 119,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_3",
+      "itemType": "TOWER_THREE_TYPE"
+    },
+    {
+      "id": 120,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_3",
+      "itemType": "TOWER_THREE_TYPE"
+    },
+    {
+      "id": 121,
+      "cardType": "ITEM_TYPE",
+      "description": "building card city",
+      "cardImage": "card_buildings_city_3",
+      "itemType": "TOWER_THREE_TYPE"
+    },
+    {
+      "id": 122,
+      "cardType": "ITEM_TYPE",
+      "description": "building card farm",
+      "cardImage": "card_buildings_farm_1",
+      "itemType": "RESOURCE_PEARL_TYPE"
+    },
+    {
+      "id": 123,
+      "cardType": "ITEM_TYPE",
+      "description": "building card farm",
+      "cardImage": "card_buildings_farm_2",
+      "itemType": "RESOURCE_FISH_TYPE"
+    },
+    {
+      "id": 124,
+      "cardType": "ITEM_TYPE",
+      "description": "building card farm",
+      "cardImage": "card_buildings_farm_3",
+      "itemType": "RESOURCE_MUSHROOM_TYPE"
+    },
+    {
+      "id": 125,
+      "cardType": "ITEM_TYPE",
+      "description": "building card farm",
+      "cardImage": "card_buildings_farm_4",
+      "itemType": "RESOURCE_COMBO_TYPE"
+    },
+    {
+      "id": 126,
+      "cardType": "ITEM_TYPE",
+      "description": "building card farm",
+      "cardImage": "card_buildings_farm_5",
+      "itemType": "RESOURCE_WOOD_TYPE"
+    },
+    {
+      "id": 127,
+      "cardType": "ITEM_TYPE",
+      "description": "building card farm",
+      "cardImage": "card_buildings_farm_6",
+      "itemType": "RESOURCE_IRON_TYPE"
+    },
+    {
+      "id": 128,
+      "cardType": "ITEM_TYPE",
+      "description": "building card farm",
+      "cardImage": "card_buildings_farm_7",
+      "itemType": "RESOURCE_CARROT_TYPE"
+    },
+    {
+      "id": 129,
+      "cardType": "ITEM_TYPE",
+      "description": "building card farm",
+      "cardImage": "card_buildings_farm_8",
+      "itemType": "RESOURCE_GEM_TYPE"
+    },
+    {
+      "id": 130,
+      "cardType": "ITEM_TYPE",
+      "description": "building card farm",
+      "cardImage": "card_buildings_farm_9",
+      "itemType": "RESOURCE_ORE_TYPE"
+    },
+    {
+      "id": 131,
+      "cardType": "ITEM_TYPE",
+      "description": "building card farm",
+      "cardImage": "card_buildings_farm_10",
+      "itemType": "RESOURCE_GOLD_TYPE"
+    },
+    {
+      "id": 132,
+      "cardType": "ITEM_TYPE",
+      "description": "building card farm",
+      "cardImage": "card_buildings_farm_11",
+      "itemType": "RESOURCE_COMBO_TYPE"
+    },
+    {
+      "id": 133,
+      "cardType": "ITEM_TYPE",
+      "description": "building card farm",
+      "cardImage": "card_buildings_farm_12",
+      "itemType": "RESOURCE_SPICE_TYPE"
+    },
+    {
+      "id": 134,
+      "cardType": "ITEM_TYPE",
+      "description": "building card sky tower",
+      "cardImage": "card_buildings_sky_tower_1",
+      "itemType": "SKY_TOWER_TYPE"
+    },
+    {
+      "id": 135,
+      "cardType": "ITEM_TYPE",
+      "description": "building card sky tower",
+      "cardImage": "card_buildings_sky_tower_1",
+      "itemType": "SKY_TOWER_TYPE"
+    },
+    {
+      "id": 136,
+      "cardType": "ITEM_TYPE",
+      "description": "building card sky tower",
+      "cardImage": "card_buildings_sky_tower_1",
+      "itemType": "SKY_TOWER_TYPE"
+    },
+    {
+      "id": 137,
+      "cardType": "ITEM_TYPE",
+      "description": "building card camp",
+      "cardImage": "card_buildings_camp_1",
+      "itemType": "CAMP_TYPE"
+    },
+    {
+      "id": 138,
+      "cardType": "ITEM_TYPE",
+      "description": "building card camp",
+      "cardImage": "card_buildings_camp_2",
+      "itemType": "CAMP_TYPE"
+    },
+    {
+      "id": 139,
+      "cardType": "ITEM_TYPE",
+      "description": "building card camp",
+      "cardImage": "card_buildings_camp_3",
+      "itemType": "CAMP_TYPE"
+    },
+    {
+      "id": 140,
+      "cardType": "ITEM_TYPE",
+      "description": "building card camp",
+      "cardImage": "card_buildings_camp_4",
+      "itemType": "CAMP_TYPE"
+    },
+    {
+      "id": 141,
+      "cardType": "ITEM_TYPE",
+      "description": "building card camp",
+      "cardImage": "card_buildings_camp_5",
+      "itemType": "CAMP_TYPE"
+    },
+    {
+      "id": 142,
+      "cardType": "ITEM_TYPE",
+      "description": "building card camp",
+      "cardImage": "card_buildings_camp_6",
+      "itemType": "CAMP_TYPE"
+    },
+    {
+      "id": 143,
+      "cardType": "BONUS_TYPE",
+      "description": "get more two cards",
+      "cardImage": "card_buildings_get_more_cards_1",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 144,
+      "cardType": "BONUS_TYPE",
+      "description": "get more two cards",
+      "cardImage": "card_buildings_get_more_cards_1",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 145,
+      "cardType": "BONUS_TYPE",
+      "description": "get more two cards",
+      "cardImage": "card_buildings_get_more_cards_1",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 146,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_1",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 147,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_2",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 148,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_3",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 149,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_4",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 150,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_5",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 151,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_6",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 152,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_7",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 153,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_8",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 154,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_9",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 155,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_10",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 156,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_11",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 157,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_12",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 158,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_13",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 159,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_14",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 160,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_15",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 161,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_16",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 162,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_17",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 163,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_18",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 164,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_19",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 165,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_20",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 166,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_21",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 167,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_22",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 168,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_23",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 169,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_24",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 170,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_25",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 171,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_26",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 172,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_27",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 173,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_28",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 174,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_29",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 175,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_30",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 176,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_31",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 177,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_32",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 178,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_33",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 179,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_34",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 180,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_35",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 181,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_36",
+	  "bonusType": "INVALID_BONUS"
+    },
+    {
+      "id": 182,
+      "cardType": "BONUS_TYPE",
+      "description": "parchment",
+      "cardImage": "card_parchment_37",
+	  "bonusType": "INVALID_BONUS"
+    }
+  ]
+}

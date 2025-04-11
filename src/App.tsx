@@ -10,10 +10,13 @@ import { SettingsScreen } from './components/SettingsScreen/SettingsScreen';
 import { TestScreen } from './components/TestScreen';
 import { WebsocketComponent } from './components/StartScreen/WebsocketComponent';
 import { PlayerControl } from './components/StartScreen/PlayerControl';
+import { Provider } from 'jotai';
+import { store } from './atoms/stateAtom';
 
 function App() {
   return (
-    <>
+    //todo: carefull
+    <Provider store={store}>
       <Router>
         <div className={'flex gap-4'}>
           <PlayerControl />
@@ -41,7 +44,7 @@ function App() {
           <Route path={'/'} element={<StartScreen />}></Route>
         </Routes>
       </Router>
-    </>
+    </Provider>
   );
 }
 

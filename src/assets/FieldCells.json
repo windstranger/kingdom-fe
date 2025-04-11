@@ -1,0 +1,804 @@
+{
+  "FieldCell": [
+    {
+      "coordinates": {
+        "x": 1,
+        "y": "a"
+      },
+      "terrainType": "FOREST_TYPE",
+      "fieldImage": "field_a_1"
+    },
+    {
+      "coordinates": {
+        "x": 2,
+        "y": "a"
+      },
+      "terrainType": "FOREST_TYPE",
+      "fieldImage": "field_a_2"
+    },
+    {
+      "coordinates": {
+        "x": 3,
+        "y": "a"
+      },
+      "terrainType": "FOREST_TYPE",
+      "fieldImage": "field_a_3"
+    },
+    {
+      "coordinates": {
+        "x": 4,
+        "y": "a"
+      },
+      "terrainType": "CITY_TYPE",
+      "fieldImage": "field_a_4"
+    },
+    {
+      "coordinates": {
+        "x": 5,
+        "y": "a"
+      },
+      "terrainType": "SEA_TYPE",
+      "fieldImage": "field_a_5"
+    },
+    {
+      "coordinates": {
+        "x": 6,
+        "y": "a"
+      },
+      "terrainType": "SEA_TYPE",
+      "fieldImage": "field_a_6"
+    },
+    {
+      "coordinates": {
+        "x": 7,
+        "y": "a"
+      },
+      "terrainType": "SEA_TYPE",
+      "fieldImage": "field_a_7"
+    },
+    {
+      "coordinates": {
+        "x": 8,
+        "y": "a"
+      },
+      "terrainType": "FOREST_TYPE",
+      "fieldImage": "field_a_8"
+    },
+    {
+      "coordinates": {
+        "x": 9,
+        "y": "a"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_a_9"
+    },
+    {
+      "coordinates": {
+        "x": 10,
+        "y": "a"
+      },
+      "terrainType": "SEA_TYPE",
+      "fieldImage": "field_a_10"
+    },
+    {
+      "coordinates": {
+        "x": 1,
+        "y": "b"
+      },
+      "terrainType": "MOUNTAIN_TYPE",
+      "fieldImage": "field_b_1"
+    },
+    {
+      "coordinates": {
+        "x": 2,
+        "y": "b"
+      },
+      "terrainType": "MOUNTAIN_TYPE",
+      "fieldImage": "field_b_2"
+    },
+    {
+      "coordinates": {
+        "x": 3,
+        "y": "b"
+      },
+      "terrainType": "CITY_TYPE",
+      "fieldImage": "field_b_3"
+    },
+    {
+      "coordinates": {
+        "x": 4,
+        "y": "b"
+      },
+      "terrainType": "SEA_TYPE",
+      "fieldImage": "field_b_4"
+    },
+    {
+      "coordinates": {
+        "x": 5,
+        "y": "b"
+      },
+      "terrainType": "SEA_TYPE",
+      "fieldImage": "field_b_5"
+    },
+    {
+      "coordinates": {
+        "x": 6,
+        "y": "b"
+      },
+      "terrainType": "MOUNTAIN_TYPE",
+      "fieldImage": "field_b_6"
+    },
+    {
+      "coordinates": {
+        "x": 7,
+        "y": "b"
+      },
+      "terrainType": "CITY_TYPE",
+      "fieldImage": "field_b_7"
+    },
+    {
+      "coordinates": {
+        "x": 8,
+        "y": "b"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_b_8"
+    },
+    {
+      "coordinates": {
+        "x": 9,
+        "y": "b"
+      },
+      "terrainType": "CITY_TYPE",
+      "fieldImage": "field_b_9"
+    },
+    {
+      "coordinates": {
+        "x": 10,
+        "y": "b"
+      },
+      "terrainType": "SEA_TYPE",
+      "fieldImage": "field_b_10"
+    },
+    {
+      "coordinates": {
+        "x": 1,
+        "y": "c"
+      },
+      "terrainType": "CITY_TYPE",
+      "fieldImage": "field_c_1"
+    },
+    {
+      "coordinates": {
+        "x": 2,
+        "y": "c"
+      },
+      "terrainType": "MOUNTAIN_TYPE",
+      "fieldImage": "field_c_2"
+    },
+    {
+      "coordinates": {
+        "x": 3,
+        "y": "c"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_c_3"
+    },
+    {
+      "coordinates": {
+        "x": 4,
+        "y": "c"
+      },
+      "terrainType": "SEA_TYPE",
+      "fieldImage": "field_c_4"
+    },
+    {
+      "coordinates": {
+        "x": 5,
+        "y": "c"
+      },
+      "terrainType": "SEA_TYPE",
+      "fieldImage": "field_c_5"
+    },
+    {
+      "coordinates": {
+        "x": 6,
+        "y": "c"
+      },
+      "terrainType": "MOUNTAIN_TYPE",
+      "fieldImage": "field_c_6"
+    },
+    {
+      "coordinates": {
+        "x": 7,
+        "y": "c"
+      },
+      "terrainType": "FIELD_TYPE",
+      "fieldImage": "field_c_7"
+    },
+    {
+      "coordinates": {
+        "x": 8,
+        "y": "c"
+      },
+      "terrainType": "MOUNTAIN_TYPE",
+      "fieldImage": "field_c_8"
+    },
+    {
+      "coordinates": {
+        "x": 9,
+        "y": "c"
+      },
+      "terrainType": "MOUNTAIN_TYPE",
+      "fieldImage": "field_c_9"
+    },
+    {
+      "coordinates": {
+        "x": 10,
+        "y": "c"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_c_10"
+    },
+    {
+      "coordinates": {
+        "x": 1,
+        "y": "d"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_d_1"
+    },
+    {
+      "coordinates": {
+        "x": 2,
+        "y": "d"
+      },
+      "terrainType": "MOUNTAIN_TYPE",
+      "fieldImage": "field_d_2"
+    },
+    {
+      "coordinates": {
+        "x": 3,
+        "y": "d"
+      },
+      "terrainType": "CITY_TYPE",
+      "fieldImage": "field_d_3"
+    },
+    {
+      "coordinates": {
+        "x": 4,
+        "y": "d"
+      },
+      "terrainType": "FIELD_TYPE",
+      "fieldImage": "field_d_4"
+    },
+    {
+      "coordinates": {
+        "x": 5,
+        "y": "d"
+      },
+      "terrainType": "MOUNTAIN_TYPE",
+      "fieldImage": "field_d_5"
+    },
+    {
+      "coordinates": {
+        "x": 6,
+        "y": "d"
+      },
+      "terrainType": "MOUNTAIN_TYPE",
+      "fieldImage": "field_d_6"
+    },
+    {
+      "coordinates": {
+        "x": 7,
+        "y": "d"
+      },
+      "terrainType": "FIELD_TYPE",
+      "fieldImage": "field_d_7"
+    },
+    {
+      "coordinates": {
+        "x": 8,
+        "y": "d"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_d_8"
+    },
+    {
+      "coordinates": {
+        "x": 9,
+        "y": "d"
+      },
+      "terrainType": "CITY_TYPE",
+      "fieldImage": "field_d_9"
+    },
+    {
+      "coordinates": {
+        "x": 10,
+        "y": "d"
+      },
+      "terrainType": "FOREST_TYPE",
+      "fieldImage": "field_d_10"
+    },
+    {
+      "coordinates": {
+        "x": 1,
+        "y": "e"
+      },
+      "terrainType": "FOREST_TYPE",
+      "fieldImage": "field_e_1"
+    },
+    {
+      "coordinates": {
+        "x": 2,
+        "y": "e"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_e_2"
+    },
+    {
+      "coordinates": {
+        "x": 3,
+        "y": "e"
+      },
+      "terrainType": "FIELD_TYPE",
+      "fieldImage": "field_e_3"
+    },
+    {
+      "coordinates": {
+        "x": 4,
+        "y": "e"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_e_4"
+    },
+    {
+      "coordinates": {
+        "x": 5,
+        "y": "e"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_e_5"
+    },
+    {
+      "coordinates": {
+        "x": 6,
+        "y": "e"
+      },
+      "terrainType": "CITY_TYPE",
+      "fieldImage": "field_e_6"
+    },
+    {
+      "coordinates": {
+        "x": 7,
+        "y": "e"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_e_7"
+    },
+    {
+      "coordinates": {
+        "x": 8,
+        "y": "e"
+      },
+      "terrainType": "FIELD_TYPE",
+      "fieldImage": "field_e_8"
+    },
+    {
+      "coordinates": {
+        "x": 9,
+        "y": "e"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_e_9"
+    },
+    {
+      "coordinates": {
+        "x": 10,
+        "y": "e"
+      },
+      "terrainType": "CITY_TYPE",
+      "fieldImage": "field_e_10"
+    },
+    {
+      "coordinates": {
+        "x": 1,
+        "y": "f"
+      },
+      "terrainType": "FOREST_TYPE",
+      "fieldImage": "field_f_1"
+    },
+    {
+      "coordinates": {
+        "x": 2,
+        "y": "f"
+      },
+      "terrainType": "MOUNTAIN_TYPE",
+      "fieldImage": "field_f_2"
+    },
+    {
+      "coordinates": {
+        "x": 3,
+        "y": "f"
+      },
+      "terrainType": "MOUNTAIN_TYPE",
+      "fieldImage": "field_f_3"
+    },
+    {
+      "coordinates": {
+        "x": 4,
+        "y": "f"
+      },
+      "terrainType": "FOREST_TYPE",
+      "fieldImage": "field_f_4"
+    },
+    {
+      "coordinates": {
+        "x": 5,
+        "y": "f"
+      },
+      "terrainType": "FOREST_TYPE",
+      "fieldImage": "field_f_5"
+    },
+    {
+      "coordinates": {
+        "x": 6,
+        "y": "f"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_f_6"
+    },
+    {
+      "coordinates": {
+        "x": 7,
+        "y": "f"
+      },
+      "terrainType": "FIELD_TYPE",
+      "fieldImage": "field_f_7"
+    },
+    {
+      "coordinates": {
+        "x": 8,
+        "y": "f"
+      },
+      "terrainType": "CITY_TYPE",
+      "fieldImage": "field_f_8"
+    },
+    {
+      "coordinates": {
+        "x": 9,
+        "y": "f"
+      },
+      "terrainType": "FOREST_TYPE",
+      "fieldImage": "field_f_9"
+    },
+    {
+      "coordinates": {
+        "x": 10,
+        "y": "f"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_f_10"
+    },
+    {
+      "coordinates": {
+        "x": 1,
+        "y": "g"
+      },
+      "terrainType": "FOREST_TYPE",
+      "fieldImage": "field_g_1"
+    },
+    {
+      "coordinates": {
+        "x": 2,
+        "y": "g"
+      },
+      "terrainType": "CITY_TYPE",
+      "fieldImage": "field_g_2"
+    },
+    {
+      "coordinates": {
+        "x": 3,
+        "y": "g"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_g_3"
+    },
+    {
+      "coordinates": {
+        "x": 4,
+        "y": "g"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_g_4"
+    },
+    {
+      "coordinates": {
+        "x": 5,
+        "y": "g"
+      },
+      "terrainType": "CITY_TYPE",
+      "fieldImage": "field_g_5"
+    },
+    {
+      "coordinates": {
+        "x": 6,
+        "y": "g"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_g_6"
+    },
+    {
+      "coordinates": {
+        "x": 7,
+        "y": "g"
+      },
+      "terrainType": "FIELD_TYPE",
+      "fieldImage": "field_g_7"
+    },
+    {
+      "coordinates": {
+        "x": 8,
+        "y": "g"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_g_8"
+    },
+    {
+      "coordinates": {
+        "x": 9,
+        "y": "g"
+      },
+      "terrainType": "CITY_TYPE",
+      "fieldImage": "field_g_9"
+    },
+    {
+      "coordinates": {
+        "x": 10,
+        "y": "g"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_g_10"
+    },
+    {
+      "coordinates": {
+        "x": 1,
+        "y": "h"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_h_1"
+    },
+    {
+      "coordinates": {
+        "x": 2,
+        "y": "h"
+      },
+      "terrainType": "FIELD_TYPE",
+      "fieldImage": "field_h_2"
+    },
+    {
+      "coordinates": {
+        "x": 3,
+        "y": "h"
+      },
+      "terrainType": "CITY_TYPE",
+      "fieldImage": "field_h_3"
+    },
+    {
+      "coordinates": {
+        "x": 4,
+        "y": "h"
+      },
+      "terrainType": "FIELD_TYPE",
+      "fieldImage": "field_h_4"
+    },
+    {
+      "coordinates": {
+        "x": 5,
+        "y": "h"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_h_5"
+    },
+    {
+      "coordinates": {
+        "x": 6,
+        "y": "h"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_h_6"
+    },
+    {
+      "coordinates": {
+        "x": 7,
+        "y": "h"
+      },
+      "terrainType": "CITY_TYPE",
+      "fieldImage": "field_h_7"
+    },
+    {
+      "coordinates": {
+        "x": 8,
+        "y": "h"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_h_8"
+    },
+    {
+      "coordinates": {
+        "x": 9,
+        "y": "h"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_h_9"
+    },
+    {
+      "coordinates": {
+        "x": 10,
+        "y": "h"
+      },
+      "terrainType": "FOREST_TYPE",
+      "fieldImage": "field_h_10"
+    },
+    {
+      "coordinates": {
+        "x": 1,
+        "y": "i"
+      },
+      "terrainType": "CITY_TYPE",
+      "fieldImage": "field_i_1"
+    },
+    {
+      "coordinates": {
+        "x": 2,
+        "y": "i"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_i_2"
+    },
+    {
+      "coordinates": {
+        "x": 3,
+        "y": "i"
+      },
+      "terrainType": "CITY_TYPE",
+      "fieldImage": "field_i_3"
+    },
+    {
+      "coordinates": {
+        "x": 4,
+        "y": "i"
+      },
+      "terrainType": "FIELD_TYPE",
+      "fieldImage": "field_i_4"
+    },
+    {
+      "coordinates": {
+        "x": 5,
+        "y": "i"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_i_5"
+    },
+    {
+      "coordinates": {
+        "x": 6,
+        "y": "i"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_i_6"
+    },
+    {
+      "coordinates": {
+        "x": 7,
+        "y": "i"
+      },
+      "terrainType": "CITY_TYPE",
+      "fieldImage": "field_i_7"
+    },
+    {
+      "coordinates": {
+        "x": 8,
+        "y": "i"
+      },
+      "terrainType": "PLAIN_TYPE",
+      "fieldImage": "field_i_8"
+    },
+    {
+      "coordinates": {
+        "x": 9,
+        "y": "i"
+      },
+      "terrainType": "CITY_TYPE",
+      "fieldImage": "field_i_9"
+    },
+    {
+      "coordinates": {
+        "x": 10,
+        "y": "i"
+      },
+      "terrainType": "FOREST_TYPE",
+      "fieldImage": "field_i_10"
+    },
+    {
+      "coordinates": {
+        "x": 1,
+        "y": "j"
+      },
+      "terrainType": "FOREST_TYPE",
+      "fieldImage": "field_j_1"
+    },
+    {
+      "coordinates": {
+        "x": 2,
+        "y": "j"
+	  },
+	  "terrainType": "FOREST_TYPE",
+      "fieldImage": "field_j_2"
+    },
+    {
+      "coordinates": {
+        "x": 3,
+        "y": "j"
+      },
+      "terrainType": "CITY_TYPE",
+      "fieldImage": "field_j_3"
+    },
+    {
+      "coordinates": {
+        "x": 4,
+        "y": "j"
+	  },
+	  "terrainType": "SEA_TYPE",
+      "fieldImage": "field_j_4"
+    },
+    {
+      "coordinates": {
+        "x": 5,
+        "y": "j"
+      },
+      "terrainType": "SEA_TYPE",
+      "fieldImage": "field_j_5"
+    },
+    {
+      "coordinates": {
+        "x": 6,
+        "y": "j"
+	  },
+	  "terrainType": "FIELD_TYPE",
+      "fieldImage": "field_j_6"
+    },
+    {
+      "coordinates": {
+        "x": 7,
+        "y": "j"
+      },
+      "terrainType": "MOUNTAIN_TYPE",
+      "fieldImage": "field_j_7"
+    },
+    {
+      "coordinates": {
+        "x": 8,
+        "y": "j"
+	  },
+	  "terrainType": "MOUNTAIN_TYPE",
+      "fieldImage": "field_j_8"
+    },
+    {
+      "coordinates": {
+        "x": 9,
+        "y": "j"
+      },
+      "terrainType": "SEA_TYPE",
+      "fieldImage": "field_j_9"
+    },
+    {
+      "coordinates": {
+        "x": 10,
+        "y": "j"
+	  },
+	  "terrainType": "SEA_TYPE",
+      "fieldImage": "field_j_10"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import { useAtomValue } from 'jotai/index';
 import { playersAtom } from '../../atoms/playerAtoms';
 import { useNavigate } from 'react-router-dom';
+import { startRound } from './gameActions';
 
 const useGameEvents = () => {
   const players = useAtomValue(playersAtom);
@@ -9,7 +10,10 @@ const useGameEvents = () => {
       players[key].dc.send(JSON.stringify(msg));
     });
   };
-  return { broadcastMsg };
+  const sendToUserMsg = (playerName: string, msg: any) => {
+    players[playerName].dc.send(JSON.stringify(msg));
+  };
+  return { broadcastMsg, sendToUserMsg };
 };
 
 export const PlayerControl = () => {
@@ -25,6 +29,14 @@ export const PlayerControl = () => {
         className={'btn btn-primary'}
       >
         start game
+      </button>
+      <button
+        className={'btn btn-accent'}
+        onClick={() => {
+          startRound();
+        }}
+      >
+        startRound
       </button>
     </div>
   );

@@ -1,0 +1,79 @@
+{
+  "Item": [
+    {
+      "itemType": "TOWER_ONE_TYPE",
+      "itemImage": "Tower_1",
+      "terrainTypes": ["FOREST_TYPE", "MOUNTAIN_TYPE", "CITY_TYPE", "PLAIN_TYPE", "SEA_TYPE", "FIELD_TYPE"]
+    },
+    {
+      "itemType": "TOWER_TWO_TYPE",
+      "itemImage": "Tower_2",
+      "terrainTypes": ["FOREST_TYPE", "MOUNTAIN_TYPE", "CITY_TYPE", "PLAIN_TYPE", "SEA_TYPE", "FIELD_TYPE"]
+    },
+    {
+      "itemType": "TOWER_THREE_TYPE",
+      "itemImage": "Tower_3",
+      "terrainTypes": ["MOUNTAIN_TYPE"]
+    },
+    {
+      "itemType": "CAMP_TYPE",
+      "itemImage": "Camp",
+      "terrainTypes": ["FOREST_TYPE", "MOUNTAIN_TYPE", "CITY_TYPE", "PLAIN_TYPE", "SEA_TYPE", "FIELD_TYPE"]
+    },
+    {
+      "itemType": "SKY_TOWER_TYPE",
+      "itemImage": "Sky Tower",
+      "terrainTypes": []
+    },
+    {
+      "itemType": "RESOURCE_PEARL_TYPE",
+      "itemImage": "Pearl",
+      "terrainTypes": ["SEA_TYPE"]
+    },
+    {
+      "itemType": "RESOURCE_FISH_TYPE",
+      "itemImage": "Fish",
+      "terrainTypes": ["FOREST_TYPE", "MOUNTAIN_TYPE", "CITY_TYPE", "PLAIN_TYPE", "SEA_TYPE", "FIELD_TYPE"]
+    },
+    {
+      "itemType": "RESOURCE_MUSHROOM_TYPE",
+      "itemImage": "Mushroom",
+      "terrainTypes": ["FOREST_TYPE"]
+    },
+    {
+      "itemType": "RESOURCE_WOOD_TYPE",
+      "itemImage": "Wood",
+      "terrainTypes": ["FOREST_TYPE", "MOUNTAIN_TYPE", "CITY_TYPE", "PLAIN_TYPE", "SEA_TYPE", "FIELD_TYPE"]
+    },
+    {
+      "itemType": "RESOURCE_IRON_TYPE",
+      "itemImage": "Iron",
+      "terrainTypes": ["MOUNTAIN_TYPE"]
+    },
+    {
+      "itemType": "RESOURCE_CARROT_TYPE",
+      "itemImage": "Carrot",
+      "terrainTypes": ["FOREST_TYPE", "MOUNTAIN_TYPE", "CITY_TYPE", "PLAIN_TYPE", "SEA_TYPE", "FIELD_TYPE"]
+    },
+    {
+      "itemType": "RESOURCE_GEM_TYPE",
+      "itemImage": "Gem",
+      "terrainTypes": ["MOUNTAIN_TYPE"]
+    },
+    {
+      "itemType": "RESOURCE_ORE_TYPE",
+      "itemImage": "Ore",
+      "terrainTypes": ["MOUNTAIN_TYPE"]
+    },
+    {
+      "itemType": "RESOURCE_GOLD_TYPE",
+      "itemImage": "Gold",
+      "terrainTypes": ["MOUNTAIN_TYPE"]
+    },
+    {
+      "itemType": "RESOURCE_SPICE_TYPE",
+      "itemImage": "Spice",
+      "terrainTypes": ["FIELD_TYPE"]
+    }
+  ]
+}

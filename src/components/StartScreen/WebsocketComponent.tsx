@@ -6,6 +6,7 @@ import { playersAtom } from '../../atoms/playerAtoms';
 import { toast } from 'react-toastify';
 
 import { useNavigate } from 'react-router-dom';
+import { GAME_EVENTS } from './gameActions';
 // stun:stun.l.google.com:19302
 // urls: ['stun:194.87.235.155:3478'],
 const rtcConfig = {
@@ -17,6 +18,7 @@ const rtcConfig = {
     },
   ],
 };
+
 export const WebsocketComponent = () => {
   const [msg, setMsg] = useState<string>('');
   const [isOpen, setIsOpen] = useState<boolean>(false);
