@@ -2,6 +2,7 @@ import { useCallback, useRef, useState } from 'react';
 import { useAtom, useAtomValue } from 'jotai';
 import { connectedUsersAtom, stateAtom, websocketAddressAtom } from '../../atoms/stateAtom';
 import useWebSocket from 'react-use-websocket';
+import { playersAtom } from '../../atoms/playerAtoms';
 
 // stun:stun.l.google.com:19302
 // urls: ['stun:194.87.235.155:3478'],
@@ -23,6 +24,7 @@ export const WebsocketComponent = () => {
   const [hasServer, setHasServer] = useState(false);
   const peerRef = useRef<RTCPeerConnection>();
   const dataChannelRef = useRef<RTCDataChannel>();
+  const [players, setPlayers] = useAtom(playersAtom);
 
   const webSocket = useWebSocket(`${wsAddress}/?playerName=${playerName}`, {
     onOpen: () => {
@@ -64,7 +66,19 @@ export const WebsocketComponent = () => {
           await peerConnection.setLocalDescription(answer);
           peerConnection.ondatachannel = (event) => {
             const dataChannel = event.channel;
-            dataChannel.onopen = () => console.log('📡 DataChannel opened');
+            dataChannel.onopen = () => {
+              console.log('📡 DataChannel opened');
+              setPlayers((players) => {
+                return {
+                  ...players,
+                  [data.fromId]: {
+                    pc: peerRef.current,
+                    name: data.fromId,
+                    dc: dataChannelRef.current,
+                  },
+                };
+              });
+            };
             dataChannel.onmessage = (event) => console.log('📩 Received:', event.data);
             dataChannelRef.current = dataChannel;
           };
@@ -98,6 +112,17 @@ export const WebsocketComponent = () => {
           await peerConnection.setRemoteDescription(remoteDesc);
           // dataChannelRef.current?.send('Привет!');
           console.log('✅ Answer обработан. Соединение установлено.');
+
+          setPlayers((players) => {
+            return {
+              ...players,
+              [data.fromId]: {
+                pc: peerRef.current,
+                name: data.fromId,
+                dc: dataChannelRef.current,
+              },
+            };
+          });
         }
       }
       if (data.type === 'icecandidate') {
