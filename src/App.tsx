@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 import { RoomScreen } from './components/RoomScreen/RoomScreen.jsx';
-import { GameScreen } from './components/GameScreen/GameScreen.jsx';
+import { GameScreen } from './components/GameScreen/GameScreen';
 // import WebRtcQR2 from './components/StartScreen/WebRtcQR2.tsx';
 import { StartScreen } from './components/StartScreen/StartScreen';
 import WebRtcQR2 from './components/StartScreen/WebRtcQR2';
@@ -39,7 +39,7 @@ function App() {
           <Route path={'/room'} element={<RoomScreen />}></Route>
           <Route path={'/webrtc'} element={<WebRtcQR2 />}></Route>
           <Route path={'/test'} element={<TestScreen />}></Route>
-          <Route path={'/internet'} element={<InternetWebRtc />}></Route>
+          {/*<Route path={'/internet'} element={<InternetWebRtc />}></Route>*/}
           <Route path={'/settings'} element={<SettingsScreen />}></Route>
           <Route path={'/'} element={<StartScreen />}></Route>
         </Routes>

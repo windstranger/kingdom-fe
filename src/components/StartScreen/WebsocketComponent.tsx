@@ -1,12 +1,20 @@
 import { useCallback, useRef, useState } from 'react';
 import { useAtom, useAtomValue } from 'jotai';
-import { connectedUsersAtom, stateAtom, websocketAddressAtom } from '../../atoms/stateAtom';
+import {
+  ConnectedUser,
+  connectedUsersAtom,
+  hasServerAtom,
+  meAtom,
+  stateAtom,
+  websocketAddressAtom,
+} from '../../atoms/stateAtom';
 import useWebSocket from 'react-use-websocket';
-import { playersAtom } from '../../atoms/playerAtoms';
+import { hostAtom, playersAtom, RemotePlayer } from '../../atoms/playerAtoms';
 import { toast } from 'react-toastify';
 
 import { useNavigate } from 'react-router-dom';
-import { GAME_EVENTS } from './gameActions';
+import { useSetAtom } from 'jotai/index';
+import { useIncomingGameEventHandler } from '../../services/incomingGameEventHandler';
 // stun:stun.l.google.com:19302
 // urls: ['stun:194.87.235.155:3478'],
 const rtcConfig = {
@@ -25,20 +33,15 @@ export const WebsocketComponent = () => {
   const wsAddress = useAtomValue(websocketAddressAtom);
   const playerName = useAtomValue(stateAtom);
   const [connectedUsers, setConnectedUsers] = useAtom(connectedUsersAtom);
-  const [hasServer, setHasServer] = useState(false);
+  const [hasServer, setHasServer] = useAtom(hasServerAtom);
   const peerRef = useRef<RTCPeerConnection>();
   const dataChannelRef = useRef<RTCDataChannel>();
-  const [players, setPlayers] = useAtom(playersAtom);
+  const [, setPlayers] = useAtom(playersAtom);
+  const setHost = useSetAtom(hostAtom);
   const navigate = useNavigate();
+  const me = useAtomValue(meAtom);
 
-  const messageHandler = useCallback((event: any) => {
-    const eventData = JSON.parse(event.data);
-    console.log('📩 Received:', event.data);
-    if (eventData.type === 'start_game') {
-      toast('game started');
-      navigate('/game');
-    }
-  }, []);
+  const messageHandler = useIncomingGameEventHandler();
 
   const webSocket = useWebSocket(`${wsAddress}/?playerName=${playerName}`, {
     onOpen: () => {
@@ -64,7 +67,7 @@ export const WebsocketComponent = () => {
       console.log(data);
 
       if (data.type === 'players') {
-        const nPlayers = data.data.filter((p) => p.playerName !== playerName);
+        const nPlayers = data.data.filter((p: ConnectedUser) => p.playerName !== playerName);
         setConnectedUsers(nPlayers);
       }
       if (data.type === 'sdp') {
@@ -81,14 +84,19 @@ export const WebsocketComponent = () => {
             const dataChannel = event.channel;
             dataChannel.onopen = () => {
               console.log('📡 DataChannel opened');
+
+              if (!peerRef.current || !dataChannelRef.current) {
+                throw new Error('refs should be defined');
+              }
+              const remPlayer = new RemotePlayer(
+                peerRef.current,
+                dataChannelRef.current,
+                data.fromId,
+              );
               setPlayers((players) => {
                 return {
                   ...players,
-                  [data.fromId]: {
-                    pc: peerRef.current,
-                    name: data.fromId,
-                    dc: dataChannelRef.current,
-                  },
+                  [data.fromId]: remPlayer,
                 };
               });
             };
@@ -122,18 +130,20 @@ export const WebsocketComponent = () => {
         if (data.sdp.type === 'answer') {
           // Это для клиента-инициатора (offerer) — вот тут важный шаг:
           const peerConnection = peerRef.current;
-          await peerConnection.setRemoteDescription(remoteDesc);
+          await peerConnection?.setRemoteDescription(remoteDesc);
           // dataChannelRef.current?.send('Привет!');
           console.log('✅ Answer обработан. Соединение установлено.');
 
+          if (!peerRef.current || !dataChannelRef.current) {
+            throw new Error('refs should be defined');
+          }
+
+          const remPlayer = new RemotePlayer(peerRef.current, dataChannelRef.current, data.fromId);
+          setHost(remPlayer);
           setPlayers((players) => {
             return {
               ...players,
-              [data.fromId]: {
-                pc: peerRef.current,
-                name: data.fromId,
-                dc: dataChannelRef.current,
-              },
+              [data.fromId]: remPlayer,
             };
           });
         }
@@ -142,7 +152,7 @@ export const WebsocketComponent = () => {
         // Add the ICE candidate received from the other peer
         const peerConnection = peerRef.current;
         if (data.candidate) {
-          await peerConnection.addIceCandidate(new RTCIceCandidate(data.candidate));
+          await peerConnection?.addIceCandidate(new RTCIceCandidate(data.candidate));
         }
       }
       setMsg(msg.data);

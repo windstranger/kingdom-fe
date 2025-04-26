@@ -77,7 +77,7 @@ export const WaitingRoom = ({ playerName, createServer }) => {
       <input type={'text'} value={textToSend} onChange={(e) => setTextToSend(e.target.value)} />
       <Button onClick={sendWebRtcMessage}>send webrtc message to all</Button>
       <Button onClick={sendMessageToUser}>send webrtc message to all</Button>
-      <Button onClick={createServer}>create server</Button>
+      <Button onClick={createServer}>create server lol</Button>
       {/*<button onClick={onSendMessage}>connect to client</button>*/}
     </div>
   );

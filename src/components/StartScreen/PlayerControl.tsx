@@ -1,7 +1,7 @@
 import { useAtomValue } from 'jotai/index';
 import { playersAtom } from '../../atoms/playerAtoms';
 import { useNavigate } from 'react-router-dom';
-import { startRound } from './gameActions';
+import { GAME_EVENTS, startRound } from './gameActions';
 
 const useGameEvents = () => {
   const players = useAtomValue(playersAtom);
@@ -23,7 +23,7 @@ export const PlayerControl = () => {
     <div>
       <button
         onClick={() => {
-          broadcastMsg({ type: 'start_game', data: 'some data' });
+          broadcastMsg({ type: GAME_EVENTS.START_GAME });
           navigate('/game');
         }}
         className={'btn btn-primary'}
