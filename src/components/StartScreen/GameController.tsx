@@ -4,10 +4,12 @@ import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import { Game } from '../../atoms/game';
 import { Card, Item, Player, playersAtom } from '../../atoms/playerAtoms';
 import { drawEvents$, GAME_EVENTS } from './gameActions.js';
+import { createReactiveGame } from '../../core/Game';
 
 export const GameController = () => {
   const setGame = useSetAtom(gameAtom);
   const players = useAtomValue(playersAtom);
+
   const playerName = useAtomValue(stateAtom);
   const [me, setMe] = useAtom(meAtom);
   const serverCreated = useAtomValue(hasServerAtom);
@@ -20,6 +22,9 @@ export const GameController = () => {
     { id: 4 },
     { id: 5 },
   ]);
+  const notPlacedItems = useMemo(() => {
+    return worldItems.filter((el) => !el.pos);
+  }, [worldItems]);
   const placedItems = useMemo(() => {
     return worldItems.filter((el) => el.pos);
   }, [worldItems]);
@@ -27,10 +32,14 @@ export const GameController = () => {
 
   const startGame = useCallback(() => {
     // add players from webrtc
-    const game = new Game([new Player(playerName, true), ...Object.values(players)]);
+    const game = createReactiveGame(
+      new Game([new Player(playerName, true), ...Object.values(players)]),
+    );
     setGame(game);
     setMe(new Player(playerName, true));
     game.startGame();
+    return game;
+    // game.currentRound = 2;
   }, [playerName, players, setGame, setMe]);
 
   useEffect(() => {
@@ -77,7 +86,7 @@ export const GameController = () => {
     // return () => {
     //   drawEvents$.unsubscribe();
     // };
-  }, [serverCreated]);
+  }, [serverCreated, startGame]);
   const rows = useMemo(() => {
     return [...Array(10).keys()];
   }, []);
@@ -123,12 +132,6 @@ export const GameController = () => {
       nItems[elIndex].pos = { col, row };
       return nItems;
     });
-    // setMap((prev) => {
-    //   const newMap = prev.map((r) => [...r]);
-    //   newMap[row][col] = item;
-    //   return newMap;
-    // });
-    // setItems((prev) => prev.filter((i) => i !== item)); // убираем из инвентаря
   };
 
   const handleDragOver = (e: DragEvent) => {
@@ -136,10 +139,10 @@ export const GameController = () => {
   };
   return (
     <div>
-      connected players:
-      <button className={'p-4 bg-yellow-300 border-r'} onClick={startGame}>
-        start game
-      </button>
+      {/*connected players:*/}
+      {/*<button className={'p-4 bg-yellow-300 border-r'} onClick={startGame}>*/}
+      {/*  start game*/}
+      {/*</button>*/}
       <div>
         <div className={'flex'}>
           {myCards.map((card, index) => {
@@ -157,7 +160,7 @@ export const GameController = () => {
           })}
         </div>
         <div className={'flex'}>
-          {worldItems.map((card, index) => {
+          {notPlacedItems.map((card, index) => {
             return (
               <div
                 className={'w-8 h-16 bg-amber-800 border m-1'}
@@ -185,6 +188,7 @@ export const GameController = () => {
                     >
                       {item?.id}
 
+                      {row}
                       {col}
                     </div>
                   );

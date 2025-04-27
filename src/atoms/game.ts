@@ -19,14 +19,18 @@ export class RemoteGame implements AbstractGameType {
 }
 
 export class Game {
-  currentRound = 1;
-  playersFinished = 0;
-  players: AbstractPlayer[] = [];
-  cards: Card[] = [];
-  world = {};
+  currentRound: number;
+  playersFinished: number;
+  players: AbstractPlayer[];
+  cards: Card[];
+  world: object;
 
   constructor(players: AbstractPlayer[]) {
     this.players = players;
+    this.currentRound = 0;
+    this.playersFinished = 0;
+    this.cards = [];
+    this.world = {};
   }
 
   getNextPlayer(currentPlayer: AbstractPlayer) {

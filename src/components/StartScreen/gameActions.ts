@@ -72,16 +72,17 @@ export const processEvent = (ev: GameEvent) => {
   //   }
   // }
   if (ev.type === GAME_EVENTS.TAKE_CARDS) {
-    debugger;
     // if (ev.toId) {
     me?.takeCards(ev.data.cards);
     // }
     if (ev.toId === me?.playerName) {
       drawEvents$.next(ev);
     }
+    return;
   }
   if (ev.type === GAME_EVENTS.END_TURN) {
     game?.endTurn(players[ev.fromId], ev.data.playedCards, ev.data.cardsLeft);
+    return;
   }
   if (ev.type === GAME_EVENTS.PLAYED_CARDS) {
     const playerEvIndex = game?.players.findIndex((pl) => (pl.playerName = ev.fromId));
@@ -92,6 +93,7 @@ export const processEvent = (ev: GameEvent) => {
       if (!nextPlayer) throw new Error('next player should exist');
       nextPlayer.nextCards = ev.data.cardsLeft;
     }
+    return;
   }
 };
 outcomingEvents$.subscribe((ev) => {
