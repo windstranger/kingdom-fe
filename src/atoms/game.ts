@@ -85,7 +85,9 @@ export class Game {
 
   startGame() {
     // this.cards = shuffle(range(cardsAmount));
-    this.cards = range(cardsAmount);
+    this.cards = range(cardsAmount).map((c) => {
+      return { id: c };
+    });
     this.currentRound = 1;
     this.roundBegin();
   }

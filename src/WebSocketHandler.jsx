@@ -18,12 +18,6 @@ export const useWebRtcHandlers = () => {
       case 'message':
         setPlayerMessages((prevPlayers) => [...prevPlayers, `${data.fromId} saying: ` + data.data]);
         break;
-      case 'serverWelcome':
-        console.log('serverWelcome');
-        break;
-      case 'startGame':
-        console.log('startGame');
-        break;
     }
   };
   return webrtcHandlers;

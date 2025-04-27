@@ -1,20 +1,15 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { gameAtom, hasServerAtom, meAtom, stateAtom } from '../../atoms/stateAtom.js';
-import { useAtom, useAtomValue, useSetAtom } from 'jotai';
-import { Game } from '../../atoms/game';
-import { Card, Item, Player, playersAtom } from '../../atoms/playerAtoms';
+import { hasServerAtom, meAtom } from '../../atoms/stateAtom.js';
+import { useAtom, useAtomValue } from 'jotai';
+import { Card, Item } from '../../atoms/playerAtoms';
 import { drawEvents$, GAME_EVENTS } from './gameActions.js';
-import { createReactiveGame } from '../../core/Game';
+import { flushQueue, isGameReady } from '../../core/eventQueue';
 
 export const GameController = () => {
-  const setGame = useSetAtom(gameAtom);
-  const players = useAtomValue(playersAtom);
+  const me = useAtomValue(meAtom);
+  const [force, setForce] = useState(false);
+  console.log('game controller my cards', me?.myCards);
 
-  const playerName = useAtomValue(stateAtom);
-  const [me, setMe] = useAtom(meAtom);
-  const serverCreated = useAtomValue(hasServerAtom);
-
-  const [myCards, setMyCards] = useState([1, 2, 3]);
   const [worldItems, setWorldItems] = useState<Item[]>([
     { id: 1 },
     { id: 2 },
@@ -30,63 +25,31 @@ export const GameController = () => {
   }, [worldItems]);
   const [playedCards, setPlayedCards] = useState(new Set());
 
-  const startGame = useCallback(() => {
-    // add players from webrtc
-    const game = createReactiveGame(
-      new Game([new Player(playerName, true), ...Object.values(players)]),
-    );
-    setGame(game);
-    setMe(new Player(playerName, true));
-    game.startGame();
-    return game;
-    // game.currentRound = 2;
-  }, [playerName, players, setGame, setMe]);
+  useEffect(() => {
+    isGameReady.flag = true;
+    flushQueue();
+  }, []);
 
   useEffect(() => {
-    (async () => {
-      if (serverCreated) {
-        startGame();
-        console.log('im server');
-      } else {
-        console.log('im client');
-      }
-      // const player1 = new Player('sasha');
-      // const player2 = new Player('katya');
-      // const game = new Game();
-      // game.joinGame(player1);
-      // game.joinGame(player2);
-      // game.startGame();
-      // const roundAmount = 5;
-      // for (let i = 0; i < roundAmount; ++i) {
-      //   player1.endTurn(player1.cards.splice(0, 2));
-      //   player2.endTurn(player2.cards.splice(0, 2));
-      // }
-      // player1.endRound();
-      // player2.endRound();
-      //
-      // for (let i = 0; i < roundAmount; ++i) {
-      //   player1.endTurn(player1.cards.splice(0, 2));
-      //   player2.endTurn(player2.cards.splice(0, 2));
-      // }
-      // player1.endRound();
-      // player2.endRound();
-      //
-      // console.log(game);
-    })();
-
-    drawEvents$.subscribe((ev) => {
-      if (ev.type === GAME_EVENTS.TAKE_CARDS) {
-        setMyCards(ev.data.cards);
-      }
-
-      if (ev.type === GAME_EVENTS.WORLD_STATE) {
-        setWorldItems(ev.data.world);
-      }
+    const meSub = me?.changes$.subscribe((e) => {
+      // debugger;
+      // setForce((f) => !f);
     });
-    // return () => {
-    //   drawEvents$.unsubscribe();
-    // };
-  }, [serverCreated, startGame]);
+    const drawSub = drawEvents$.subscribe((ev) => {
+      // if (ev.type === GAME_EVENTS.TAKE_CARDS) {
+      //   debugger;
+      //   setMyCards(ev.data.cards);
+      // }
+      // if (ev.type === GAME_EVENTS.WORLD_STATE) {
+      //   setWorldItems(ev.data.world);
+      // }
+    });
+    return () => {
+      drawSub.unsubscribe();
+      meSub?.unsubscribe();
+    };
+  }, [me?.changes$]);
+
   const rows = useMemo(() => {
     return [...Array(10).keys()];
   }, []);
@@ -139,13 +102,9 @@ export const GameController = () => {
   };
   return (
     <div>
-      {/*connected players:*/}
-      {/*<button className={'p-4 bg-yellow-300 border-r'} onClick={startGame}>*/}
-      {/*  start game*/}
-      {/*</button>*/}
       <div>
         <div className={'flex'}>
-          {myCards.map((card, index) => {
+          {me?.myCards.map((card, index) => {
             return (
               <div
                 className={`w-16 h-32  border m-1 ${playedCards.has(card) ? 'bg-green-300' : 'bg-amber-400'}`}
@@ -154,7 +113,7 @@ export const GameController = () => {
                   onSelectCard(card);
                 }}
               >
-                {card}
+                {card.id}
               </div>
             );
           })}

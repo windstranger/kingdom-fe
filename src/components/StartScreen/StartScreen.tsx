@@ -1,5 +1,5 @@
 'use client';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { stateAtom } from '../../atoms/stateAtom.js';
 import { useAtom } from 'jotai';
 import { LoginForm } from './LoginForm.jsx';
@@ -11,6 +11,8 @@ import { gameEvent$, notifyUnity } from './eventBus.ts';
 
 import LZString from 'lz-string';
 import { PlayerList } from '../ui/PlayerList';
+import { PlayerControl } from './PlayerControl';
+import { WebsocketComponent } from './WebsocketComponent';
 
 const sdp = {
   type: 'answer',
@@ -39,6 +41,22 @@ export const StartScreen = () => {
 
   return (
     <div>
+      <div className={'flex gap-4'}>
+        <PlayerControl />
+        <Link className={'underline text-blue-400'} to={'/'}>
+          home
+        </Link>
+        <Link className={'underline text-blue-400'} to={'/game'}>
+          game
+        </Link>
+        <Link className={'underline text-blue-400'} to={'/test'}>
+          test
+        </Link>
+        <Link className={'underline text-blue-400'} to={'/settings'}>
+          settings
+        </Link>
+        <WebsocketComponent />
+      </div>
       <ToastContainer />
       {!playerName ? (
         <LoginForm onEnterRoom={onEnterRoom} />
@@ -57,6 +75,7 @@ export const StartScreen = () => {
           </div>
         </div>
       )}
+      <Outlet />
     </div>
   );
 };

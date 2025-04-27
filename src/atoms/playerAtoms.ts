@@ -4,12 +4,15 @@ import { GAME_EVENTS, GameEvent, outcomingEvents$ } from '../components/StartScr
 
 export type Item = {
   id: number;
+  playerName?: string;
   pos?: {
     row?: number;
     col?: number;
   };
 };
-export type Card = {};
+export type Card = {
+  id: number;
+};
 
 export type AbstractPlayer = {
   playerName: string;
@@ -75,7 +78,7 @@ export class Player implements AbstractPlayer {
 
   isMe = true;
   takeCards = (cards: Card[]) => {
-    this.myCards = cards;
+    this.myCards = [...cards];
 
     console.log('take local cards');
     console.log(cards);

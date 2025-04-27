@@ -1,33 +1,16 @@
 import { useCallback } from 'react';
 import { GAME_EVENTS, GameEvent, processEvent } from '../components/StartScreen/gameActions';
-import { useNavigate } from 'react-router-dom';
-import { useAtomValue, useSetAtom } from 'jotai/index';
-import { meAtom, stateAtom } from '../atoms/stateAtom';
-import { Player } from '../atoms/playerAtoms';
+import { router } from '../constants/router';
 
 export const useIncomingGameEventHandler = () => {
-  const navigate = useNavigate();
-  const playerName = useAtomValue(stateAtom);
-  const setMe = useSetAtom(meAtom);
-
-  return useCallback(
-    (event: { data: string }) => {
-      const eventData: GameEvent = JSON.parse(event.data);
+  return useCallback((event: { data: string }) => {
+    const eventData: GameEvent = JSON.parse(event.data);
+    if (eventData) {
       if (eventData.type === GAME_EVENTS.START_GAME) {
-        navigate('/game');
-
-        // add players from webrtc
-        setMe(new Player(playerName));
-        // game.startGame();
-
-        // outcomingEvents$.next(eventData);
-        return;
+        router.navigate('/game');
       }
-      if (eventData) {
-        processEvent(eventData);
-        // incomingEvent$.next(eventData);
-      }
-    },
-    [navigate, playerName, setMe],
-  );
+      processEvent(eventData);
+      // incomingEvent$.next(eventData);
+    }
+  }, []);
 };

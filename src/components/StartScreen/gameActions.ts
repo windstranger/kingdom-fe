@@ -1,7 +1,10 @@
-import { gameAtom, hasServerAtom, meAtom, store } from '../../atoms/stateAtom';
+import { gameAtom, hasServerAtom, meAtom, stateAtom, store } from '../../atoms/stateAtom';
 import { Card, hostAtom, Item, Player, playersAtom, RemotePlayer } from '../../atoms/playerAtoms';
 import { Subject } from 'rxjs';
 import { Game, RemoteGame } from '../../atoms/game';
+import { router } from '../../constants/router';
+import { createReactiveGame } from '../../core/Game';
+import { queueEvent } from '../../core/eventQueue';
 
 export enum GAME_EVENTS {
   START_GAME = 'START_GAME',
@@ -45,39 +48,33 @@ export function startRound() {
   //sendCards to players
 }
 
-const createGame = (ev: GameEvent) => {
-  const isServer = store.get(hasServerAtom);
-  const players = store.get(playersAtom);
-  if (isServer) {
-    const game = new Game([new Player(ev.fromId, true), ...Object.values(players)]);
-    game.startGame();
-    return game;
-  } else {
-    return new RemoteGame();
-  }
-};
-
 export const processEvent = (ev: GameEvent) => {
+  if (queueEvent(ev)) return;
   const game = store.get(gameAtom);
+  const playerName = store.get(stateAtom);
   const players = store.get(playersAtom);
   const me = store.get(meAtom);
   const isServer = store.get(hasServerAtom);
 
-  // if (ev.type === GAME_EVENTS.START_GAME) {
-  //   if (isServer) {
-  //     const me = new Player(ev.fromId, true);
-  //     const game = new Game([me, ...Object.values(players)]);
-  //     store.set(gameAtom, game);
-  //     store.set(meAtom, me);
-  //   }
-  // }
-  if (ev.type === GAME_EVENTS.TAKE_CARDS) {
-    // if (ev.toId) {
-    me?.takeCards(ev.data.cards);
-    // }
-    if (ev.toId === me?.playerName) {
-      drawEvents$.next(ev);
+  if (ev.type === GAME_EVENTS.START_GAME) {
+    if (isServer) {
+      const me = createReactiveGame(new Player(playerName, true));
+      store.set(meAtom, me);
+      const game = new Game([me, ...Object.values(players)]);
+      store.set(gameAtom, game);
+      game.startGame();
+    } else {
+      const me = createReactiveGame(new Player(playerName));
+      store.set(meAtom, me);
+      const game = new Game([me, ...Object.values(players)]);
+      store.set(gameAtom, game);
     }
+  }
+  if (ev.type === GAME_EVENTS.TAKE_CARDS) {
+    me?.takeCards(ev.data.cards);
+    // if (ev.toId === me?.playerName) {
+    //   drawEvents$.next(ev);
+    // }
     return;
   }
   if (ev.type === GAME_EVENTS.END_TURN) {
@@ -98,22 +95,24 @@ export const processEvent = (ev: GameEvent) => {
 };
 outcomingEvents$.subscribe((ev) => {
   const host = store.get(hostAtom);
-  const me = store.get(meAtom);
+  const playerName = store.get(stateAtom);
   const players = store.get(playersAtom);
-  if (!me) throw new Error('no me');
-  if (ev.toId && me.playerName !== ev.toId) {
-    if (ev.type === GAME_EVENTS.TAKE_CARDS) {
-      players[ev.toId].takeCards(ev.data.cards);
+
+  if (ev.toId && playerName !== ev.toId) {
+    const targetPlayer = players[ev.toId];
+    if (targetPlayer instanceof RemotePlayer) {
+      targetPlayer.dc?.send(JSON.stringify({ fromId: playerName, ...ev }));
     }
     return;
   }
   if (!ev.toId && host instanceof RemotePlayer) {
-    host.dc?.send(JSON.stringify({ fromId: me.playerName, event: ev }));
+    host.dc?.send(JSON.stringify({ fromId: playerName, ...ev }));
   } else {
-    processEvent({ ...ev, fromId: me.playerName });
+    if (ev.type === GAME_EVENTS.START_GAME) {
+      router.navigate('/game');
+    }
+    processEvent({ ...ev, fromId: playerName });
   }
-
-  console.log(ev);
 });
 
 function startTurn() {

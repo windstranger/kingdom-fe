@@ -1,12 +1,11 @@
 import { Subject } from 'rxjs';
-import { apply } from 'lodash';
 
 export type GameChange = {
   type: 'batch';
   changedProperties: Record<string, any>;
 };
 
-type GameWithBatching = {
+export type GameWithBatching = {
   changes$: Subject<GameChange>;
 };
 

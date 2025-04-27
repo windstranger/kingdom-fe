@@ -2,6 +2,7 @@ import { atomWithLocalStorage } from '../atomWithStorage.js';
 import { atom, createStore } from 'jotai';
 import { AbstractGameType, Game } from './game';
 import { Player } from './playerAtoms';
+import { GameWithBatching } from '../core/Game';
 
 export const store = createStore();
 
@@ -10,7 +11,7 @@ export const stateAtom = atomWithLocalStorage('playerName', '');
 export const playerConnectionsAtom = atom([]);
 export const playersAtom = atom([]);
 export const gameAtom = atom<Game | null>(null);
-export const meAtom = atom<Player | null>(null);
+export const meAtom = atom<(GameWithBatching & Player) | null>(null);
 export const websocketAtom = atom({});
 export const playerMessagesAtom = atom([]);
 
